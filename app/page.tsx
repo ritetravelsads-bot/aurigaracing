@@ -404,7 +404,7 @@ export default async function HomePage() {
 
       {/* Helmets Full Width Banner */}
       <Link href="/products?category=helmets" className="block">
-        <section className="relative w-full aspect-[1500/450] bg-black overflow-hidden group cursor-pointer">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/helmet%20banner.png-uBOFWYiQBgShACYyH5PskDyM5snSQZ.jpeg"
             alt="Auriga Racing Helmets"
@@ -561,7 +561,7 @@ export default async function HomePage() {
 
       {/* Boots Full Width Banner */}
       <Link href="/products?category=boots" className="block">
-        <section className="relative w-full aspect-[1500/450] bg-black overflow-hidden group cursor-pointer">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/boots%20banner.png-nWYUMWEuuxXDmkm9XbGypSImTxeSCM.jpeg"
             alt="Auriga Racing Boots - Engineered for Speed and Precision"
@@ -640,7 +640,7 @@ export default async function HomePage() {
 
       {/* Frames Full Width Banner */}
       <Link href="/products?category=frames" className="block">
-        <section className="relative w-full aspect-[1500/450] bg-black overflow-hidden group cursor-pointer">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/frame%20banner.png-dwscOhFyi1f9pphfTCB16a2KAlPmz9.jpeg"
             alt="Auriga Racing Inline Skate Frames - Ultra-Precision AL-7075-T6"
@@ -719,7 +719,7 @@ export default async function HomePage() {
 
       {/* Wheels Full Width Banner */}
       <Link href="/products?category=wheels" className="block">
-        <section className="relative w-full aspect-[1500/450] bg-black overflow-hidden group cursor-pointer">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheel%20banner.png-Gap8XKX502nDWQSK9n4InPIMvlNCgM.jpeg"
             alt="Auriga Racing Wheels - Speed Performance Control"
