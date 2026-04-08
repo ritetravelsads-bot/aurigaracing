@@ -166,8 +166,8 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section - Full Width Image Slider */}
-      <section className="relative bg-black text-white overflow-hidden h-[50vh] md:h-[70vh] lg:h-[80vh]">
+      {/* Hero Section - Full Width Image Slider (1500x450 banners - 3.33:1 aspect ratio) */}
+      <section className="relative bg-black text-white overflow-hidden w-full aspect-[1500/450]">
         <HeroBannerSlider />
       </section>
 

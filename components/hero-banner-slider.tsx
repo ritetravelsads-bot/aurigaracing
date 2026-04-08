@@ -2,24 +2,28 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const banners = [
   {
     id: 1,
-    image: "https://aurigaracing.com/wp-content/uploads/revslider/slider-1/1.png",
-    alt: "Pro Inline Skate Boots - Handcrafted Excellence",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1-ulzW1fQW32GSccDd5OYURcOlH9Batv.png",
+    alt: "Inferno Boots - Custom Fit Guaranteed",
+    link: "/products?category=boots",
   },
   {
     id: 2,
-    image: "https://aurigaracing.com/wp-content/uploads/revslider/slider-1/2.png",
-    alt: "Aero Helmets - Wind Tunnel Tested",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-q4pJRJXV3JBOO0Zyq6JQ2jHbgTrCPW.png",
+    alt: "TENET HI-LO Frames - Podium Proven",
+    link: "/products?category=frames",
   },
   {
     id: 3,
-    image: "https://aurigaracing.com/wp-content/uploads/revslider/slider-1/3.png",
-    alt: "Racing Wheels - Engineered for Champions",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3-J5GTy7qRCWkMfPmKwKG8uwmOfLl9qy.png",
+    alt: "TENET Frames - Precision and Power Redefined",
+    link: "/products?category=frames",
   },
 ]
 
@@ -73,13 +77,14 @@ export function HeroBannerSlider() {
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-black">
-      {/* Slides - Full Width Images */}
+      {/* Slides - Full Width Images (1500x450 aspect ratio) */}
       {banners.map((banner, index) => (
-        <div
+        <Link
+          href={banner.link}
           key={banner.id}
           className={cn(
-            "absolute inset-0 transition-all duration-700 ease-out",
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+            "absolute inset-0 transition-all duration-700 ease-out cursor-pointer",
+            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
           )}
         >
           <Image
@@ -90,9 +95,7 @@ export function HeroBannerSlider() {
             priority={index === 0}
             sizes="100vw"
           />
-          {/* Subtle gradient overlay for better visibility of navigation */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-        </div>
+        </Link>
       ))}
 
       {/* Navigation Arrows */}
