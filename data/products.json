@@ -1,0 +1,1226 @@
+{
+  "categories": [
+    {
+      "name": "Inline Speed Skating",
+      "slug": "inline-speed-skating",
+      "description": "Professional inline speed skating equipment",
+      "parent_id": null,
+      "is_active": true,
+      "sort_order": 1
+    },
+    {
+      "name": "Boots",
+      "slug": "boots",
+      "description": "Carbon fiber inline skate boots",
+      "parent_slug": "inline-speed-skating",
+      "is_active": true,
+      "sort_order": 1
+    },
+    {
+      "name": "Frames",
+      "slug": "frames",
+      "description": "Aluminum inline skate frames",
+      "parent_slug": "inline-speed-skating",
+      "is_active": true,
+      "sort_order": 2
+    },
+    {
+      "name": "Wheels",
+      "slug": "wheels",
+      "description": "High-performance inline skate wheels",
+      "parent_slug": "inline-speed-skating",
+      "is_active": true,
+      "sort_order": 3
+    },
+    {
+      "name": "Bearings",
+      "slug": "bearings",
+      "description": "Precision bearings for speed skating",
+      "parent_slug": "inline-speed-skating",
+      "is_active": true,
+      "sort_order": 4
+    },
+    {
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Speed skating accessories and gear",
+      "parent_slug": "inline-speed-skating",
+      "is_active": true,
+      "sort_order": 5
+    },
+    {
+      "name": "Skate Packages",
+      "slug": "skate-packages",
+      "description": "Complete inline skate packages",
+      "parent_slug": "inline-speed-skating",
+      "is_active": true,
+      "sort_order": 6
+    },
+    {
+      "name": "Helmets",
+      "slug": "helmets",
+      "description": "Aerodynamic speed skating helmets",
+      "parent_id": null,
+      "is_active": true,
+      "sort_order": 2
+    },
+    {
+      "name": "Apparel",
+      "slug": "apparel",
+      "description": "Racing apparel and clothing",
+      "parent_id": null,
+      "is_active": true,
+      "sort_order": 3
+    }
+  ],
+  "products": [
+    {
+      "wp_id": 4396,
+      "name": "Auriga Racing Elite Inline Skate Boots (Silver)",
+      "slug": "auriga-racing-elite-inline-skate-boots-silver",
+      "sku": "AR-ELITE-BOOT-SILVER",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Racing Elite Inline Skate Boots are a class apart from others. Made with 100% carbon fiber specially outsourced from one of the finest producers of carbon fiber in Japan.",
+      "description": "Auriga Racing Elite Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber layered unilaterally and microfiber leather upper bonded with the genuine leather.\n\nThe Boot Shell: Auriga Racing Elite boots are made with 100% carbon fiber and are fully heat moldable. A custom like snug fit ensures that each and every stroke delivers the maximum power to your skates towards the finish line and ultimately to the podium and glory.\n\nCarbon Fiber: Auriga Racing boots are made from high strength Carbon fiber specially sourced from one of the world's top carbon fiber manufacturers in Japan. The layers of carbon fiber are laid down unilaterally giving the maximum utilization of fiber to get strength from it using special kind of resins.\n\nThe Toe Box: The toe box is designed with ample room ensuring comfort during long skating sessions while maintaining structural integrity.\n\nHeat Moldability: Fully heat moldable for a custom fit around heel and ankle area.",
+      "price_in_cents": 74900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2395-ok-copy-scaled.jpg",
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2404-ok-copy-scaled.jpg",
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2398-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU36, EU37, EU38, EU39, EU40, EU41, EU42, EU43, EU44, EU45",
+        "colors": "Silver",
+        "mounting": "195MM",
+        "shell": "100% Carbon Fiber",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU36 - EU45",
+        "Mounting": "195MM",
+        "Shell": "100% Carbon Fiber",
+        "Upper Material": "Microfiber leather",
+        "Heat Moldable": "Yes"
+      },
+      "features": [
+        "100% Carbon Fiber Shell",
+        "Japanese Carbon Fiber",
+        "Fully Heat Moldable",
+        "195MM Mounting",
+        "Microfiber Leather Upper",
+        "Custom Snug Fit"
+      ],
+      "variations": [
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.9 cms / EU38", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "25.5 cms / EU39", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "26.1 cms / EU40", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "26.7 cms / EU41", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "27.4 cms / EU42", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "28.0 cms / EU43", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "28.5 cms / EU44", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "29.0 cms / EU45", "Color": "Silver"}, "price_in_cents": 74900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible",
+      "allow_reviews": true
+    },
+    {
+      "wp_id": 4443,
+      "name": "Auriga Racing Elite Inline Skate Boots (Gold)",
+      "slug": "auriga-racing-elite-inline-skate-boots-gold",
+      "sku": "AR-ELITE-BOOT-GOLD",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Racing Elite Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber.",
+      "description": "Auriga Racing Elite Inline Skate Boots (Gold) are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber layered unilaterally and microfiber leather upper bonded with the genuine leather.\n\nThe Boot Shell: Auriga Racing Elite boots are made with 100% carbon fiber and are fully heat moldable.\n\nCarbon Fiber: Made from high strength Carbon fiber specially sourced from one of the world's top carbon fiber manufacturers in Japan.",
+      "price_in_cents": 74900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2379-ok-copy-scaled.jpg",
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2382-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU36, EU37, EU38, EU39, EU40, EU41, EU42, EU43, EU44, EU45",
+        "colors": "Gold",
+        "mounting": "195MM",
+        "shell": "100% Carbon Fiber",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU36 - EU45",
+        "Mounting": "195MM",
+        "Shell": "100% Carbon Fiber"
+      },
+      "features": [
+        "100% Carbon Fiber Shell",
+        "Japanese Carbon Fiber",
+        "Fully Heat Moldable",
+        "Gold Finish"
+      ],
+      "variations": [
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.9 cms / EU38", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "25.5 cms / EU39", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "26.1 cms / EU40", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "26.7 cms / EU41", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "27.4 cms / EU42", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "28.0 cms / EU43", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "28.5 cms / EU44", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "29.0 cms / EU45", "Color": "Gold"}, "price_in_cents": 74900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4654,
+      "name": "Auriga Racing Elite Inline Skate Boots (Glossy Black)",
+      "slug": "auriga-racing-elite-inline-skate-boots-glossy-black",
+      "sku": "AR-ELITE-BOOT-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Racing Elite Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber.",
+      "description": "Auriga Racing Elite boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber layered unilaterally and microfiber leather upper bonded with the genuine leather.\n\nAuriga Racing Elite boots are made with 100% carbon fiber and are fully heat moldable. A custom like snug fit ensures that each and every stroke delivers the maximum power to your skates.",
+      "price_in_cents": 74900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/08/5-1-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU36, EU37, EU38, EU39, EU40, EU41, EU42, EU43, EU44, EU45",
+        "colors": "Glossy Black",
+        "mounting": "195MM",
+        "shell": "100% Carbon Fiber",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU36 - EU45",
+        "Mounting": "195MM",
+        "Shell": "100% Carbon Fiber"
+      },
+      "features": [
+        "100% Carbon Fiber Shell",
+        "Glossy Black Finish",
+        "Fully Heat Moldable"
+      ],
+      "variations": [
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.9 cms / EU38", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "25.5 cms / EU39", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "26.1 cms / EU40", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "26.7 cms / EU41", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "27.4 cms / EU42", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "28.0 cms / EU43", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "28.5 cms / EU44", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5},
+        {"attributes": {"Size": "29.0 cms / EU45", "Color": "Glossy Black"}, "price_in_cents": 74900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4406,
+      "name": "Auriga Racing Pro Inline Skate Boots (Silver/Black)",
+      "slug": "auriga-racing-pro-inline-skate-boots-silver-black",
+      "sku": "AR-PRO-BOOT-SILVER-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Pro Inline Skate Boots are a class apart from others. Made with the finest carbon fiber specially outsourced from one of the finest producers of carbon fiber in Japan.",
+      "description": "Auriga Racing Pro Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber layered unilaterally and microfiber leather upper bonded with the genuine leather.\n\nThe Boot Shell: Auriga Racing Pro boots are made with the finest carbon fiber and are fully heat moldable. A custom like snug fit ensures that each and every stroke delivers the maximum power to your skates towards the finish line.",
+      "price_in_cents": 64400,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2420-ok-copy-scaled.jpg",
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2418-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU36, EU37, EU38, EU39, EU40, EU41, EU42, EU43, EU44, EU45",
+        "colors": "Silver/Black",
+        "mounting": "195MM",
+        "shell": "80% Carbon + Composites",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU36 - EU45",
+        "Mounting": "195MM",
+        "Shell": "80% Carbon + Composites"
+      },
+      "features": [
+        "80% Carbon + Composites Shell",
+        "Japanese Carbon Fiber",
+        "Fully Heat Moldable",
+        "Two-tone Silver/Black Design"
+      ],
+      "variations": [
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "24.9 cms / EU38", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "25.5 cms / EU39", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "26.1 cms / EU40", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "26.7 cms / EU41", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "27.4 cms / EU42", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "28.0 cms / EU43", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "28.5 cms / EU44", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "29.0 cms / EU45", "Color": "Silver/Black"}, "price_in_cents": 64400, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4433,
+      "name": "Auriga Racing Pro Inline Skate Boots (Glossy Black)",
+      "slug": "auriga-racing-pro-inline-skate-boots-glossy-black",
+      "sku": "AR-PRO-BOOT-GLOSSY-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Pro Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber.",
+      "description": "Auriga Racing Pro Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber layered unilaterally and microfiber leather upper bonded with the genuine leather.\n\nThe Boot Shell: Auriga Elite boots are made with 80% carbon fiber and 20% glass fiber and are fully heat moldable.",
+      "price_in_cents": 64400,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2440-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU36, EU37, EU38, EU39, EU40, EU41, EU42, EU43, EU44, EU45",
+        "colors": "Glossy Black",
+        "mounting": "195MM",
+        "shell": "80% Carbon + Composites",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU36 - EU45",
+        "Mounting": "195MM",
+        "Shell": "80% Carbon + Composites"
+      },
+      "features": [
+        "80% Carbon + Composites Shell",
+        "Glossy Black Finish",
+        "Fully Heat Moldable"
+      ],
+      "variations": [
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "24.9 cms / EU38", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "25.5 cms / EU39", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "26.1 cms / EU40", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "26.7 cms / EU41", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "27.4 cms / EU42", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "28.0 cms / EU43", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "28.5 cms / EU44", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "29.0 cms / EU45", "Color": "Glossy Black"}, "price_in_cents": 64400, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4424,
+      "name": "Auriga Racing Pro Inline Skate Boots (Mint Green)",
+      "slug": "auriga-racing-pro-inline-skate-boots-mint-green",
+      "sku": "AR-PRO-BOOT-MINT",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Racing Pro Inline Skate Boots are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber.",
+      "description": "Auriga Racing Pro Inline Skate Boots (Mint Green) are designed in India and produced by some of the finest leather craftsmen, purely handmade with love using the finest Japanese Carbon Fiber layered unilaterally and microfiber leather upper bonded with the genuine leather.",
+      "price_in_cents": 64400,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2411-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU36, EU37, EU38, EU39, EU40, EU41, EU42, EU43, EU44, EU45",
+        "colors": "Mint Green",
+        "mounting": "195MM",
+        "shell": "80% Carbon + Composites",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU36 - EU45",
+        "Mounting": "195MM",
+        "Shell": "80% Carbon + Composites"
+      },
+      "features": [
+        "80% Carbon + Composites Shell",
+        "Mint Green Finish",
+        "Fully Heat Moldable"
+      ],
+      "variations": [
+        {"attributes": {"Size": "EU36", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU37", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU38", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU39", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU40", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU41", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU42", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU43", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU44", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5},
+        {"attributes": {"Size": "EU45", "Color": "Mint Green"}, "price_in_cents": 64400, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4415,
+      "name": "Auriga Racing Inferno Inline Skate Boots (White & Blue)",
+      "slug": "auriga-racing-inferno-inline-skate-boots-white-blue",
+      "sku": "AR-INFERNO-BOOT-WHITE-BLUE",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Racing Inferno Inline Skate Boots (White & Blue) boots are a class apart from others. Made with the finest carbon fiber specially outsourced from Japan.",
+      "description": "Auriga Racing Inferno Inline Skate Boots (White & Blue)\n\nThe Boot Shell: We have designed a completely new boot shell made of Carbon fiber specially outsourced from Japan. The shell is designed separately for Indian, South Asian and European skaters as the anatomy of their feet are different hence a separate shoe last to be designed and developed after analyzing the collected feet data from different parts of global regions. Result is a custom like snug fit in every pair of Auriga stock boots.\n\nCarbon Fiber: Auriga Racing boots are made from high strength Carbon fiber specially sourced from one of the world's top carbon fiber manufacturers in Japan.",
+      "price_in_cents": 42900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2446-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU30, EU31, EU32, EU33, EU34, EU35, EU36, EU37",
+        "colors": "White/Blue",
+        "mounting": "150-165mm",
+        "shell": "50% Carbon + Composites",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU30 - EU37",
+        "Mounting": "150-165mm",
+        "Shell": "50% Carbon + Composites"
+      },
+      "features": [
+        "50% Carbon + Composites Shell",
+        "Designed for Kids/Cadet Skaters",
+        "Fully Heat Moldable",
+        "White & Blue Design"
+      ],
+      "variations": [
+        {"attributes": {"Size": "19.4 cms / EU30", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "20.1 cms / EU31", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "20.7 cms / EU32", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "21.4 cms / EU33", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "22.1 cms / EU34", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "21.8 cms / EU35", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "White/Blue"}, "price_in_cents": 42900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4677,
+      "name": "Auriga Racing Inferno Inline Skate Boots (White/Pink)",
+      "slug": "auriga-racing-inferno-inline-skate-boots-white-pink",
+      "sku": "AR-INFERNO-BOOT-WHITE-PINK",
+      "brand": "Auriga Racing",
+      "product_type": "boot",
+      "short_description": "Auriga Racing Inferno Inline Skate Boots White & Pink are designed in India and produced by some of the finest leather craftsmen.",
+      "description": "Auriga Racing Inferno Inline Skate Boots (White/Pink)\n\nThe Boot Shell: We have designed a completely new boot shell made of Carbon fiber specially outsourced from Japan.\n\nCarbon Fiber: Auriga Racing boots are made from high strength Carbon fiber specially sourced from one of the world's top carbon fiber manufacturers in Japan.",
+      "price_in_cents": 42900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "boots"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/08/4-1-scaled.jpg"
+      ],
+      "product_type_details": {
+        "sizes": "EU30, EU31, EU32, EU33, EU34, EU35, EU36, EU37",
+        "colors": "White/Pink",
+        "mounting": "150-165mm",
+        "shell": "50% Carbon + Composites",
+        "heat_moldable": true
+      },
+      "specifications": {
+        "Sizes": "EU30 - EU37",
+        "Mounting": "150-165mm",
+        "Shell": "50% Carbon + Composites"
+      },
+      "features": [
+        "50% Carbon + Composites Shell",
+        "Designed for Kids/Cadet Skaters",
+        "White/Pink Design"
+      ],
+      "variations": [
+        {"attributes": {"Size": "19.4 cms / EU30", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "20.1 cms / EU31", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "20.7 cms / EU32", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "21.4 cms / EU33", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "22.1 cms / EU34", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "21.8 cms / EU35", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "23.5 cms / EU36", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5},
+        {"attributes": {"Size": "24.2 cms / EU37", "Color": "White/Pink"}, "price_in_cents": 42900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4585,
+      "name": "Auriga Racing OCCULT 4X110 Inline Skate Frames (Grey)",
+      "slug": "auriga-racing-occult-4x110-inline-skate-frames-grey",
+      "sku": "AR-OCCULT-4X110-GREY",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Auriga Racing OCCULT frames are solid frames, specially designed and engineered for exceptional performance in intense high-speed racing. Weighing merely 175g.",
+      "description": "Auriga Racing OCCULT 4X110 Grey Inline Skate Frames\n\nAuriga Racing OCCULT frames are solid frames, specially designed and engineered for exceptional performance in intense high-speed racing. These frames are ultra-light weight yet possess exceptional stiffness. OCCULT frames are a class apart from its adversaries, weighing merely 175g.\n\nThese frames are carved out in one piece from a single block of AL7075 and then tempered at T6 level. The T6 temper is usually achieved by homogenizing the cast 7075 at 450C for several hours, quenching and then ageing at 120C for several hours. This yields the peak strength of 7075 alloy. And finally, they are CNC machined to perfection.\n\nThe OCCULT frames have a 4x110mm wheel setup. They are best suitable for a versatile all-round skater and supports long distance events like a marathon, 10k or 15k Point or Elimination race.",
+      "price_in_cents": 29900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2268-ok-copy-scaled.jpg",
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2269-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "12.8, 13.0, 13.4",
+        "frame_colors": "Grey",
+        "wheel_setup": "4x110mm",
+        "material": "AL7075-T6",
+        "mount_separation": "195mm"
+      },
+      "specifications": {
+        "Wheel Setup": "4x110mm",
+        "Material": "AL7075-T6",
+        "Weight": "175g",
+        "Mount Separation": "195mm"
+      },
+      "features": [
+        "Ultra-lightweight 175g",
+        "AL7075-T6 Aircraft Aluminum",
+        "CNC Machined",
+        "4x110mm Setup"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "12.8 inches", "Color": "Grey"}, "price_in_cents": 29900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "13.0 inches", "Color": "Grey"}, "price_in_cents": 29900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "13.4 inches", "Color": "Grey"}, "price_in_cents": 29900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4608,
+      "name": "Auriga Racing OCCULT 4x110 Inline Skate Frames (Black)",
+      "slug": "auriga-racing-occult-4x110-inline-skate-frames-black",
+      "sku": "AR-OCCULT-4X110-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Auriga Racing OCCULT 4x110 (Black) Inline Skate Frames are solid frames, specially designed and engineered for exceptional performance in intense high-speed racing.",
+      "description": "Auriga Racing OCCULT 4x110 (Black) Inline Skate Frames are solid frames, specially designed and engineered for exceptional performance in intense high-speed racing. These frames are ultra-light weight yet possess exceptional stiffness. OCCULT frames are a class apart from its adversaries, weighing merely 175g.",
+      "price_in_cents": 29900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2253-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "12.8, 13.0, 13.4",
+        "frame_colors": "Black",
+        "wheel_setup": "4x110mm",
+        "material": "AL7075-T6",
+        "mount_separation": "195mm"
+      },
+      "specifications": {
+        "Wheel Setup": "4x110mm",
+        "Material": "AL7075-T6",
+        "Weight": "175g",
+        "Mount Separation": "195mm"
+      },
+      "features": [
+        "Ultra-lightweight 175g",
+        "AL7075-T6 Aircraft Aluminum",
+        "CNC Machined",
+        "Black Finish"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "12.8 inches", "Color": "Black"}, "price_in_cents": 29900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "13.0 inches", "Color": "Black"}, "price_in_cents": 29900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "13.4 inches", "Color": "Black"}, "price_in_cents": 29900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4597,
+      "name": "Auriga Racing TENET HiLo 3x110 + 1x100 Inline Skate Frames (Grey)",
+      "slug": "auriga-racing-tenet-hilo-3x110-1x100-inline-skate-frames-grey",
+      "sku": "AR-TENET-HILO-GREY",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Auriga Racing TENET frames are solid frames, specially engineered for exceptional performance in intense high-speed racing. Weighing merely 164g.",
+      "description": "Auriga Racing TENET HiLo 3x110 + 1x100 (Grey) Inline Skate Frames\n\nAuriga Racing TENET frames are solid frames, specially engineered for exceptional performance in intense high-speed racing. These frames are ultra-light weight yet possess exceptional stiffness. TENET frames weigh merely 164g.\n\nThe TENET frames have a HiLo 3x110 - 1x100 wheel setup. They are best suitable for a versatile all-round skater to sprint skaters both for events like 200 meters dual time trial to 500 meters to 10k point or elimination events.",
+      "price_in_cents": 29900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2286-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "12.8, 13.0",
+        "frame_colors": "Grey",
+        "wheel_setup": "HiLo 3x110 + 1x100",
+        "material": "AL7075-T6",
+        "mount_separation": "195mm"
+      },
+      "specifications": {
+        "Wheel Setup": "HiLo 3x110 + 1x100",
+        "Material": "AL7075-T6",
+        "Weight": "164g",
+        "Mount Separation": "195mm"
+      },
+      "features": [
+        "Ultra-lightweight 164g",
+        "HiLo Setup for Sprints",
+        "AL7075-T6 Aircraft Aluminum"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "12.8 inches", "Color": "Grey"}, "price_in_cents": 29900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "13.0 inches", "Color": "Grey"}, "price_in_cents": 29900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4614,
+      "name": "Auriga Racing TENET HiLo 3x110 + 1X100 Inline Skate Frames (Black)",
+      "slug": "auriga-racing-tenet-hilo-3x110-1x100-inline-skate-frames-black",
+      "sku": "AR-TENET-HILO-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Auriga Racing TENET HiLo 3x110 + 1X100 (Black) Inline Skate Frames are solid frames, specially engineered for exceptional performance.",
+      "description": "Auriga Racing TENET frames are solid frames, specially engineered for exceptional performance in intense high-speed racing. These frames are ultra-light weight yet possess exceptional stiffness.",
+      "price_in_cents": 29900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2278-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "12.8, 13.0",
+        "frame_colors": "Black",
+        "wheel_setup": "HiLo 3x110 + 1x100",
+        "material": "AL7075-T6"
+      },
+      "specifications": {
+        "Wheel Setup": "HiLo 3x110 + 1x100",
+        "Material": "AL7075-T6",
+        "Weight": "164g"
+      },
+      "features": [
+        "Ultra-lightweight 164g",
+        "HiLo Setup",
+        "Black Finish"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "12.8 inches", "Color": "Black"}, "price_in_cents": 29900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "13.0 inches", "Color": "Black"}, "price_in_cents": 29900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4645,
+      "name": "Auriga Racing QUANTUM 4x100mm Inline Skate Frames",
+      "slug": "auriga-racing-quantum-4x100mm-inline-skate-frames",
+      "sku": "AR-QUANTUM-4X100",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Auriga Racing QUANTUM 4x100mm Inline Skate Frames offer the optimum level of stiffness with right amount of flex.",
+      "description": "Auriga Racing QUANTUM 4x100mm Inline Skate Frames are extrusion frames made from special grade aircraft aluminum. The extrusion profile gets heat treated to T6 temper to achieve its maximum strength, artificially aged before going for CNC machining process.\n\nEvery design of QUANTUM series frames undergoes computerized stress test stimulation to check that every part, cut out, and every curve of the frame is strong enough to handle the pressure in high-speed racing especially on the corners.",
+      "price_in_cents": 19800,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2314-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "12.0",
+        "frame_colors": "Gun Metal",
+        "wheel_setup": "4x100mm",
+        "material": "AL7050",
+        "mount_separation": "165 & 195mm"
+      },
+      "specifications": {
+        "Wheel Setup": "4x100mm",
+        "Length": "12.0 Inches",
+        "Mount Separation": "165 & 195mm",
+        "Color": "Gun Metal",
+        "Weight": "198 Grams",
+        "Material": "AL7050"
+      },
+      "features": [
+        "Aircraft Grade Aluminum",
+        "Dual Mount 165 & 195mm",
+        "Gun Metal Finish"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "12.0 inches", "Color": "Gun Metal"}, "price_in_cents": 19800, "stock_quantity": 15}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4620,
+      "name": "Auriga Racing CTR22 4x84 & 3x100 Inline Skate Frames (Black)",
+      "slug": "auriga-racing-ctr22-4x84-3x100-inline-skate-frames-black",
+      "sku": "AR-CTR22-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Designed for cadet group skaters to take them to next level of speed skating. These frames are highly responsive and light in weight.",
+      "description": "Auriga Racing CTR22 (Black) 4x84 & 3x100 Inline Skate Frames\n\nDesigned especially for cadet group skaters to take them to next level of speed skating by understanding their specific requirements. These frames are highly responsive, easily maneuverable and light in weight.\n\nThis speed skate frame offers 4x84mm and 3x100mm race setups just by changing the size of the wheels. No need to replace the frame.",
+      "price_in_cents": 12900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2317-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "9.8, 10.2",
+        "frame_colors": "Black",
+        "wheel_setup": "4x84mm / 3x100mm",
+        "material": "AL6082"
+      },
+      "specifications": {
+        "Wheel Setup": "4x84mm / 3x100mm",
+        "Material": "AL6082",
+        "Color": "Black"
+      },
+      "features": [
+        "Dual Wheel Setup",
+        "Cadet Skater Design",
+        "AL6082 Aluminum"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "9.8 inches", "Color": "Black"}, "price_in_cents": 12900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "10.2 inches", "Color": "Black"}, "price_in_cents": 12900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4636,
+      "name": "Auriga Racing CTR22 4x84 / 3x100 Inline Skate Frames (Gold)",
+      "slug": "auriga-racing-ctr22-4x84-3x100-inline-skate-frames-gold",
+      "sku": "AR-CTR22-GOLD",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Designed especially for cadet group skaters to take them to next level of speed skating.",
+      "description": "Auriga Racing CTR22 (GOLD) 4x84 / 3x100 Inline Skate Frames\n\nDesigned especially for cadet group skaters to take them to next level of speed skating. These frames are highly responsive, easily maneuverable and light in weight.",
+      "price_in_cents": 12900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2322-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "frame_sizes": "9.8, 10.2",
+        "frame_colors": "Gold",
+        "wheel_setup": "4x84mm / 3x100mm",
+        "material": "AL6082"
+      },
+      "specifications": {
+        "Wheel Setup": "4x84mm / 3x100mm",
+        "Material": "AL6082",
+        "Color": "Gold"
+      },
+      "features": [
+        "Dual Wheel Setup",
+        "Gold Finish",
+        "Cadet Design"
+      ],
+      "variations": [
+        {"attributes": {"Frame Size": "9.8 inches", "Color": "Gold"}, "price_in_cents": 12900, "stock_quantity": 10},
+        {"attributes": {"Frame Size": "10.2 inches", "Color": "Gold"}, "price_in_cents": 12900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4637,
+      "name": "Auriga Racing CTR22 4x84 / 3x100 Inline Skate Frames (Blue)",
+      "slug": "auriga-racing-ctr22-4x84-3x100-inline-skate-frames-blue",
+      "sku": "AR-CTR22-BLUE",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Designed for cadet group skaters. These frames are highly responsive and maneuverable.",
+      "price_in_cents": 12900,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2327-ok-copy-scaled.jpg"],
+      "product_type_details": {
+        "frame_sizes": "9.8, 10.2",
+        "frame_colors": "Blue",
+        "wheel_setup": "4x84mm / 3x100mm",
+        "material": "AL6082"
+      },
+      "specifications": {
+        "Wheel Setup": "4x84mm / 3x100mm",
+        "Material": "AL6082",
+        "Color": "Blue"
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4640,
+      "name": "Auriga Racing CTR20 4x90 & 3x110 Inline Skate Frames (Black)",
+      "slug": "auriga-racing-ctr20-4x90-3x110-inline-skate-frames-black",
+      "sku": "AR-CTR20-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "frame",
+      "short_description": "Designed especially for cadet group skaters to take them to next level of speed skating.",
+      "price_in_cents": 12900,
+      "category_slugs": ["inline-speed-skating", "frames"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2303-ok-copy-scaled.jpg"],
+      "product_type_details": {
+        "frame_sizes": "10.4, 11.0",
+        "frame_colors": "Black",
+        "wheel_setup": "4x90mm / 3x110mm",
+        "material": "AL6082"
+      },
+      "specifications": {
+        "Wheel Setup": "4x90mm / 3x110mm",
+        "Material": "AL6082",
+        "Color": "Black"
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4377,
+      "name": "Auriga Racing QUANTUM 4X100 Inline Skate Package",
+      "slug": "auriga-racing-quantum-4x100-inline-skate-package",
+      "sku": "AR-QUANTUM-PKG-3000",
+      "brand": "Auriga Racing",
+      "product_type": "package",
+      "short_description": "Complete skate package including Pro Series Boot, Quantum 4x100mm Frame, semi race wheels, and Abec 7 Bearings.",
+      "description": "QUANTUM 4X100 Skate Package\n\nIncludes:\n- Auriga Pro Series Boot\n- Auriga Racing Quantum 4x100mm Frame\n- Auriga Racing semi race wheels 8pk\n- High Speed 7 balls Abec 7 Bearings\n- Allen Key",
+      "price_in_cents": 89900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "skate-packages"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2341-ok-copy-scaled.jpg",
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2339-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "boot_sizes": "EU38, EU39, EU40, EU41, EU42, EU43, EU44",
+        "colors": "Black/Gunmetal",
+        "frame_type": "4x100mm",
+        "included_items": ["Pro Series Boot", "Quantum 4x100mm Frame", "Semi Race Wheels 8pk", "Abec 7 Bearings", "Allen Key"]
+      },
+      "specifications": {
+        "Size Range": "EU38 to EU44",
+        "Wheel Setup": "4x100mm",
+        "Frame Length": "12.0 inches",
+        "Color": "Boot (Black) & Frame (Gunmetal)",
+        "Mount Separation": "Dual Mount 165 & 195",
+        "Shell": "Carbon Fiber",
+        "Upper Material": "Microfiber leather",
+        "Inner Lining": "Neoprene",
+        "Heat Moldability": "Fully Heat moldable",
+        "Closure System": "Laces and Micro buckle"
+      },
+      "features": [
+        "Complete Package",
+        "Carbon Fiber Boot Shell",
+        "Quantum Frame Included",
+        "Abec 7 Bearings"
+      ],
+      "variations": [
+        {"attributes": {"Size": "EU38"}, "price_in_cents": 89900, "stock_quantity": 3},
+        {"attributes": {"Size": "EU39"}, "price_in_cents": 89900, "stock_quantity": 3},
+        {"attributes": {"Size": "EU40"}, "price_in_cents": 89900, "stock_quantity": 3},
+        {"attributes": {"Size": "EU41"}, "price_in_cents": 89900, "stock_quantity": 3},
+        {"attributes": {"Size": "EU42"}, "price_in_cents": 89900, "stock_quantity": 3},
+        {"attributes": {"Size": "EU43"}, "price_in_cents": 89900, "stock_quantity": 3},
+        {"attributes": {"Size": "EU44"}, "price_in_cents": 89900, "stock_quantity": 3}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4383,
+      "name": "Auriga Racing Cadet Inline Skates 4x90 / 3x110 (Black)",
+      "slug": "auriga-racing-cadet-inline-skates-4x90-3x110-black",
+      "sku": "AR-CADET-PKG-BLACK",
+      "brand": "Auriga Racing",
+      "product_type": "package",
+      "short_description": "Designed for ambitious Cadet group skaters under 11 years. Offers versatility with three wheels to four wheels race setup.",
+      "description": "Auriga Racing Cadet Inline Skates 4x90 / 3x110 (Black)\n\nThis skate is designed and developed especially for ambitious Cadet group skaters who compete under 11 years race categories. This skate offers versatility and transformation of three wheels to four wheels race setup in the same skate package.\n\nConfiguration:\n- Auriga Racing Inferno Boot\n- CTR20 Frame (Black) 4x90mm / 3x110mm\n- Auriga Racing wheels 90mm (8pcs)\n- Auriga Racing Abec 7 bearings (16pcs)\n- 4mm Hex Allen key tool",
+      "price_in_cents": 59900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "skate-packages"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2346-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "boot_sizes": "EU34, EU35, EU36, EU37",
+        "colors": "Black",
+        "frame_type": "4x90mm / 3x110mm",
+        "included_items": ["Inferno Boot", "CTR20 Frame", "90mm Wheels 8pcs", "Abec 7 Bearings 16pcs", "Allen Key"]
+      },
+      "specifications": {
+        "Size Range": "EU34 to EU37",
+        "Wheel Setup": "4x90mm / 3x110mm",
+        "Color": "Black"
+      },
+      "features": [
+        "Dual Wheel Configuration",
+        "Cadet Design",
+        "Complete Package"
+      ],
+      "variations": [
+        {"attributes": {"Size": "EU34"}, "price_in_cents": 59900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU35"}, "price_in_cents": 59900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU36"}, "price_in_cents": 59900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU37"}, "price_in_cents": 59900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4385,
+      "name": "Auriga Racing Cadet Inline Skates 4x84 / 3x100 (Gold)",
+      "slug": "auriga-racing-cadet-inline-skates-4x84-3x100-gold",
+      "sku": "AR-CADET-PKG-GOLD",
+      "brand": "Auriga Racing",
+      "product_type": "package",
+      "short_description": "Designed for ambitious Cadet group skaters. Offers versatility with three wheels to four wheels race setup.",
+      "description": "Auriga Racing Cadet Inline Skates 4x84 / 3x100 (Gold)\n\nConfiguration:\n- Auriga Racing Inferno Boot\n- CTR22 Frame (Gold) 4x84mm / 3x100mm\n- Auriga Racing wheels 84mm (8pcs)\n- Auriga Racing Abec 7 bearings (16pcs)\n- 4mm Hex Allen key tool",
+      "price_in_cents": 54900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "skate-packages"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/DSC_2349-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "boot_sizes": "EU30, EU31, EU32, EU33, EU34, EU35, EU36",
+        "colors": "Gold",
+        "frame_type": "4x84mm / 3x100mm"
+      },
+      "variations": [
+        {"attributes": {"Size": "EU30"}, "price_in_cents": 54900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU31"}, "price_in_cents": 54900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU32"}, "price_in_cents": 54900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU33"}, "price_in_cents": 54900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU34"}, "price_in_cents": 54900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU35"}, "price_in_cents": 54900, "stock_quantity": 5},
+        {"attributes": {"Size": "EU36"}, "price_in_cents": 54900, "stock_quantity": 5}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4688,
+      "name": "Hydrogen Pro Inline Skate Wheels 110mm XXF (8pcs)",
+      "slug": "hydrogen-pro-inline-skate-wheels-110mm-xxf-8pcs",
+      "sku": "HYDROGEN-PRO-110-XXF",
+      "brand": "Hydrogen Pro",
+      "product_type": "wheel",
+      "short_description": "Hydrogen Pro wheels are made in the USA with the highest quality materials for all race conditions.",
+      "description": "Hydrogen Pro Inline Skate Wheels 110mm XXF (8pcs)\n\nHydrogen Pro wheels are made in the USA with the highest quality materials, standards and attention to details to be used during all race conditions and leisure skates for consistent, top-end performance on road, track, long distance and sprints.\n\nProvides the extra speed required for athletic competitions. excellent, consistent performance, superior control in turns, great speed all track/speed competitions.\n\nThey incorporate a multi-layer technology, Mtech, which is comprised of two layers of urethane to provide the ultimate footprint (for grip), rebound (speed/energy return), roll and wear.\n\nFeatures:\n- ELITE PERFORMANCE - Hydrogen Pro 110mm wheels provide advanced speed with excellent wear and efficiency\n- EXCLUSIVE DUAL POUR FORMULA with M-TECH - Inner ring is softer for flex, outer ring is firmer for speed\n- 9-SPOKED TURBINE CORE helps keep the straight-line speed with vibration reduction",
+      "price_in_cents": 15900,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "wheels"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/08/B09DPNYFXR-scaled.jpg"
+      ],
+      "product_type_details": {
+        "wheel_sizes": "110mm",
+        "wheel_hardness": "XX-Firm (XXF)",
+        "wheel_type": "Race"
+      },
+      "specifications": {
+        "Size": "110mm",
+        "Hardness": "XX-Firm",
+        "Quantity": "8 pieces",
+        "Made in": "USA"
+      },
+      "features": [
+        "Made in USA",
+        "M-TECH Dual Pour",
+        "9-Spoked Turbine Core",
+        "XX-Firm for Sprints"
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4754,
+      "name": "Hydrogen Pro Inline Skate Wheels 110mm XF (8pcs)",
+      "slug": "hydrogen-pro-inline-skate-wheels-110mm-xf-8pcs",
+      "sku": "HYDROGEN-PRO-110-XF",
+      "brand": "Hydrogen Pro",
+      "product_type": "wheel",
+      "short_description": "Hydrogen Pro wheels are made in the USA with the highest quality materials for all race conditions.",
+      "price_in_cents": 15900,
+      "category_slugs": ["inline-speed-skating", "wheels"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/08/B09DPPHKW1.01._SCLZZZZZZZ_SX500_.jpg"],
+      "product_type_details": {
+        "wheel_sizes": "110mm",
+        "wheel_hardness": "X-Firm (XF)",
+        "wheel_type": "Race"
+      },
+      "specifications": {
+        "Size": "110mm",
+        "Hardness": "X-Firm",
+        "Quantity": "8 pieces"
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4352,
+      "name": "Sigma-II With Visor (Black)",
+      "slug": "sigma-ii-with-visor-black",
+      "sku": "CADOMOTUS-SIGMA2-BLACK",
+      "brand": "Cadomotus",
+      "product_type": "helmet",
+      "short_description": "The Sigma-II features our race-proven magnetic lens attachment system that allows for quick attaching and removal of a wrap-around eye shield.",
+      "description": "Our new performance cycling helmet is so compact, light & comfortable you forget you actually have one on!\n\nThe Sigma-II features our race-proven magnetic lens attachment system that allows for quick attaching and removal of a wrap-around eye shield. Our system allows easy storage of the lens in the \"flipped up\" position - perfect for fast transitions in triathlon.\n\nThe new 'hidden' magnetic receivers on the helmet are fully compatible with SKY or A2 lenses.\n\n3 Reasons to wear a Cadomotus Sigma-II helmet:\n1. Sigma-II follows the latest trends in helmet design; with a robust compact shape and aerodynamic geometry.\n2. Sigma-II keeps your head cool thanks to extra-large ventilation channels, even in the highest temperatures\n3. Sigma-II allows you to use a full-face aerodynamic visor, great for triathletes or cyclist wearing prescription eyeglasses",
+      "price_in_cents": 19900,
+      "original_price_in_cents": null,
+      "category_slugs": ["helmets"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/1_Sigma-II_Visor_Black.jpg"
+      ],
+      "product_type_details": {
+        "helmet_sizes": "S, M, L",
+        "visor_included": true,
+        "visor_type": "Magnetic",
+        "certification": "CE Certified"
+      },
+      "specifications": {
+        "Color": "Black",
+        "Visor": "Included",
+        "Lens System": "Magnetic"
+      },
+      "features": [
+        "Magnetic Lens System",
+        "Aerodynamic Design",
+        "Extra-Large Ventilation",
+        "Visor Included"
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4362,
+      "name": "SIGMA-II With Visor (Galaxy)",
+      "slug": "sigma-ii-with-visor-galaxy",
+      "sku": "CADOMOTUS-SIGMA2-GALAXY",
+      "brand": "Cadomotus",
+      "product_type": "helmet",
+      "short_description": "The Sigma-II features our race-proven magnetic lens attachment system.",
+      "price_in_cents": 19900,
+      "category_slugs": ["helmets"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/05/1_Sigma-II_Visor_Galaxy.jpg"],
+      "product_type_details": {
+        "helmet_sizes": "S, M, L",
+        "visor_included": true
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4365,
+      "name": "Sigma-II With Visor (White)",
+      "slug": "sigma-ii-with-visor-white",
+      "sku": "CADOMOTUS-SIGMA2-WHITE",
+      "brand": "Cadomotus",
+      "product_type": "helmet",
+      "short_description": "The Sigma-II features our race-proven magnetic lens attachment system.",
+      "price_in_cents": 19900,
+      "category_slugs": ["helmets"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/05/Sigma-II-Visor-White-2.jpg"],
+      "product_type_details": {
+        "helmet_sizes": "S, M, L",
+        "visor_included": true
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4678,
+      "name": "Inline Frame Axles Hex (Set Of 8pcs)",
+      "slug": "inline-frame-axles-hex-set-of-8pcs",
+      "sku": "AR-AXLES-HEX-8",
+      "brand": "Auriga Racing",
+      "product_type": "accessory",
+      "short_description": "CNC machined frame axles with precision in AL7075 material. M7x1 threaded.",
+      "description": "Inline Frame Axles Hex (Set Of 8pcs)\n\nAuriga frame axles:\n- CNC machined with precision in AL7075 material.\n- M7x1 threaded to be fastened with 4mm hex tool.\n- Self-locking chamfered head.\n- Buy them in a set of 8pcs.",
+      "price_in_cents": 2200,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "accessories"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/05/00-Copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "accessory_type": "spacers"
+      },
+      "specifications": {
+        "Material": "AL7075",
+        "Thread": "M7x1",
+        "Tool": "4mm Hex",
+        "Quantity": "8 pieces"
+      },
+      "features": [
+        "CNC Machined",
+        "AL7075 Aluminum",
+        "Self-locking Head"
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4682,
+      "name": "Axles And Spacers (Set Of 8pcs Each)",
+      "slug": "axles-and-spacers-set-of-8pcs-each",
+      "sku": "AR-AXLES-SPACERS-8",
+      "brand": "Auriga Racing",
+      "product_type": "accessory",
+      "short_description": "Complete set of axles and spacers for inline skates.",
+      "price_in_cents": 2999,
+      "original_price_in_cents": 3599,
+      "discount_percentage": 17,
+      "category_slugs": ["inline-speed-skating", "accessories"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/05/00-scaled.jpg"],
+      "product_type_details": {
+        "accessory_type": "spacers"
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4683,
+      "name": "Spacers for Inline Skate Wheels (8pcs)",
+      "slug": "spacers-for-inline-skate-wheels-8pcs",
+      "sku": "AR-SPACERS-8",
+      "brand": "Auriga Racing",
+      "product_type": "accessory",
+      "short_description": "Spacers for Inline Skate Wheels",
+      "price_in_cents": 1365,
+      "category_slugs": ["inline-speed-skating", "accessories"],
+      "images": ["https://aurigaracing.com/wp-content/uploads/2024/05/00-Copy-Copy-scaled.jpg"],
+      "product_type_details": {
+        "accessory_type": "spacers"
+      },
+      "is_active": true,
+      "status": "published"
+    },
+    {
+      "wp_id": 4791,
+      "name": "Auriga Racing Hoodies",
+      "slug": "auriga-racing-hoodies",
+      "sku": "AR-HOODIE-NAVY",
+      "brand": "Auriga Racing",
+      "product_type": "accessory",
+      "short_description": "Look stylish and fabulous during winters supporting a suave and elegant Auriga Racing hoodies in Navy Blue.",
+      "description": "Auriga Racing Hoodies\n\nLook stylish and fabulous during winters supporting a suave and elegant Auriga Racing hoodies in Navy Blue.",
+      "price_in_cents": 4900,
+      "original_price_in_cents": 5900,
+      "discount_percentage": 17,
+      "category_slugs": ["apparel"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/06/DSC_2464-ok-copy-scaled.jpg"
+      ],
+      "product_type_details": {
+        "accessory_type": "hoodies",
+        "sizes": "XS, S, M, L, XL, XXL",
+        "colors": "Navy Blue"
+      },
+      "specifications": {
+        "Color": "Navy Blue",
+        "Sizes": "XS - XXL"
+      },
+      "features": [
+        "Premium Quality",
+        "Auriga Racing Branding",
+        "Navy Blue Color"
+      ],
+      "variations": [
+        {"attributes": {"Size": "XS", "Color": "Navy Blue"}, "price_in_cents": 4900, "original_price_in_cents": 5900, "stock_quantity": 10},
+        {"attributes": {"Size": "S", "Color": "Navy Blue"}, "price_in_cents": 4900, "original_price_in_cents": 5900, "stock_quantity": 10},
+        {"attributes": {"Size": "M", "Color": "Navy Blue"}, "price_in_cents": 4900, "original_price_in_cents": 5900, "stock_quantity": 10},
+        {"attributes": {"Size": "L", "Color": "Navy Blue"}, "price_in_cents": 4900, "original_price_in_cents": 5900, "stock_quantity": 10},
+        {"attributes": {"Size": "XL", "Color": "Navy Blue"}, "price_in_cents": 4900, "original_price_in_cents": 5900, "stock_quantity": 10},
+        {"attributes": {"Size": "XXL", "Color": "Navy Blue"}, "price_in_cents": 4900, "original_price_in_cents": 5900, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    },
+    {
+      "wp_id": 4823,
+      "name": "Auriga Racing Ankle Booties",
+      "slug": "auriga-racing-ankle-booties",
+      "sku": "AR-ANKLE-BOOTIES",
+      "brand": "Auriga Racing",
+      "product_type": "accessory",
+      "short_description": "Made with special fabric bonded with superfine microfiber Lycra for anti-friction and anti-blisters properties.",
+      "description": "Auriga Racing Ankle Booties\n\nMade with special fabric bonded with superfine microfiber Lycra for anti-friction and anti-blisters properties. Perfect for protecting your feet during intense speed skating sessions.",
+      "price_in_cents": 2700,
+      "original_price_in_cents": null,
+      "category_slugs": ["inline-speed-skating", "accessories"],
+      "images": [
+        "https://aurigaracing.com/wp-content/uploads/2024/07/DSC_2476-ok-scaled.jpg"
+      ],
+      "product_type_details": {
+        "accessory_type": "ankle_bootie",
+        "sizes": "S (EU34-EU36), M (EU37-EU39), L (EU40-EU42)",
+        "thickness": "Ultrathin, 1mm, 2mm, 3mm"
+      },
+      "specifications": {
+        "Material": "Microfiber Lycra",
+        "Sizes": "S, M, L",
+        "Thickness Options": "Ultrathin, 1mm, 2mm, 3mm"
+      },
+      "features": [
+        "Anti-friction",
+        "Anti-blisters",
+        "Multiple Thickness Options"
+      ],
+      "variations": [
+        {"attributes": {"Size": "S - EU34-EU36", "Thickness": "Ultrathin"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "S - EU34-EU36", "Thickness": "1mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "S - EU34-EU36", "Thickness": "2mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "S - EU34-EU36", "Thickness": "3mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "M - EU37-EU39", "Thickness": "Ultrathin"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "M - EU37-EU39", "Thickness": "1mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "M - EU37-EU39", "Thickness": "2mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "M - EU37-EU39", "Thickness": "3mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "L - EU40-EU42", "Thickness": "Ultrathin"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "L - EU40-EU42", "Thickness": "1mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "L - EU40-EU42", "Thickness": "2mm"}, "price_in_cents": 2700, "stock_quantity": 10},
+        {"attributes": {"Size": "L - EU40-EU42", "Thickness": "3mm"}, "price_in_cents": 2700, "stock_quantity": 10}
+      ],
+      "is_active": true,
+      "status": "published",
+      "visibility": "visible"
+    }
+  ]
+}

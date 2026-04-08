@@ -166,8 +166,8 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative bg-black text-white overflow-hidden h-[400px] md:h-[500px]">
+      {/* Hero Section - Full Width Image Slider */}
+      <section className="relative bg-black text-white overflow-hidden h-[50vh] md:h-[70vh] lg:h-[80vh]">
         <HeroBannerSlider />
       </section>
 

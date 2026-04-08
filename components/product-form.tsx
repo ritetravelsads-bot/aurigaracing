@@ -42,8 +42,14 @@ export function ProductForm({ product, categories }: ProductFormProps) {
   const [brand, setBrand] = useState(product?.brand || "")
   const [videoUrl, setVideoUrl] = useState(product?.video_url || "")
   const [status, setStatus] = useState(product?.status || "draft")
+  const [visibility, setVisibility] = useState(product?.visibility || "visible")
   const [stockQuantity, setStockQuantity] = useState(product?.stock_quantity?.toString() || "0")
   const [isActive, setIsActive] = useState(product?.is_active ?? true)
+  const [allowReviews, setAllowReviews] = useState(product?.allow_reviews ?? true)
+  const [backordersAllowed, setBackordersAllowed] = useState(product?.backorders_allowed ?? false)
+  const [soldIndividually, setSoldIndividually] = useState(product?.sold_individually ?? false)
+  const [gtin, setGtin] = useState(product?.gtin || "")
+  const [purchaseNote, setPurchaseNote] = useState(product?.purchase_note || "")
   const [productType, setProductType] = useState(product?.product_type || "")
   const [productTypeDetails, setProductTypeDetails] = useState<any>(product?.product_type_details || {})
   const [specifications, setSpecifications] = useState<Array<{ key: string; value: string }>>(
@@ -168,9 +174,15 @@ export function ProductForm({ product, categories }: ProductFormProps) {
         image_url: imageUrl,
         brand: brand.trim() || null,
         video_url: videoUrl.trim() || null,
+        gtin: gtin.trim() || null,
+        purchase_note: purchaseNote.trim() || null,
         status: status,
+        visibility: visibility,
         stock_quantity: stock,
         is_active: isActive,
+        allow_reviews: allowReviews,
+        backorders_allowed: backordersAllowed,
+        sold_individually: soldIndividually,
         product_type: productType || null,
         product_type_details: productTypeDetails,
         specifications: specifications.reduce((acc, spec) => {
@@ -865,42 +877,116 @@ export function ProductForm({ product, categories }: ProductFormProps) {
               <CardDescription>Manage inventory and product visibility</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="stock">Stock Quantity *</Label>
-                <Input
-                  id="stock"
-                  type="number"
-                  min="0"
-                  value={stockQuantity}
-                  onChange={(e) => setStockQuantity(e.target.value)}
-                  required
-                />
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="stock">Stock Quantity *</Label>
+                  <Input
+                    id="stock"
+                    type="number"
+                    min="0"
+                    value={stockQuantity}
+                    onChange={(e) => setStockQuantity(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="gtin">GTIN / UPC / EAN / ISBN</Label>
+                  <Input
+                    id="gtin"
+                    value={gtin}
+                    onChange={(e) => setGtin(e.target.value)}
+                    placeholder="e.g., 012345678901"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="status">Product Status</Label>
-                <select
-                  id="status"
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                >
-                  <option value="draft">Draft</option>
-                  <option value="published">Published</option>
-                  <option value="archived">Archived</option>
-                </select>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="status">Product Status</Label>
+                  <select
+                    id="status"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  >
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="archived">Archived</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="visibility">Catalog Visibility</Label>
+                  <select
+                    id="visibility"
+                    value={visibility}
+                    onChange={(e) => setVisibility(e.target.value)}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  >
+                    <option value="visible">Shop and Search</option>
+                    <option value="catalog">Shop Only</option>
+                    <option value="search">Search Only</option>
+                    <option value="hidden">Hidden</option>
+                  </select>
+                </div>
               </div>
 
               <Separator />
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <Label htmlFor="active">Active Status</Label>
-                  <p className="text-sm text-muted-foreground">
-                    {isActive ? "Product is visible" : "Product is hidden"}
-                  </p>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="active">Active Status</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {isActive ? "Product is visible" : "Product is hidden"}
+                    </p>
+                  </div>
+                  <Switch id="active" checked={isActive} onCheckedChange={setIsActive} />
                 </div>
-                <Switch id="active" checked={isActive} onCheckedChange={setIsActive} />
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="allow_reviews">Allow Reviews</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {allowReviews ? "Customers can leave reviews" : "Reviews disabled"}
+                    </p>
+                  </div>
+                  <Switch id="allow_reviews" checked={allowReviews} onCheckedChange={setAllowReviews} />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="backorders">Allow Backorders</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {backordersAllowed ? "Allow orders when out of stock" : "No backorders"}
+                    </p>
+                  </div>
+                  <Switch id="backorders" checked={backordersAllowed} onCheckedChange={setBackordersAllowed} />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="sold_individually">Sold Individually</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {soldIndividually ? "Limit to 1 per order" : "No quantity limit"}
+                    </p>
+                  </div>
+                  <Switch id="sold_individually" checked={soldIndividually} onCheckedChange={setSoldIndividually} />
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <Label htmlFor="purchase_note">Purchase Note</Label>
+                <Textarea
+                  id="purchase_note"
+                  value={purchaseNote}
+                  onChange={(e) => setPurchaseNote(e.target.value)}
+                  placeholder="Note to display after purchase (e.g., sizing info, care instructions)"
+                  rows={3}
+                />
               </div>
             </CardContent>
           </Card>

@@ -26,7 +26,7 @@ export interface Session {
   created_at: Date
 }
 
-// Product model
+// Product model - Enhanced with WooCommerce fields
 export interface Product {
   _id?: ObjectId
   id?: string
@@ -34,23 +34,124 @@ export interface Product {
   slug: string
   description?: string
   short_description?: string
+  feature_description?: string
   sku: string
+  gtin?: string // GTIN, UPC, EAN, or ISBN
   brand?: string
   price_in_cents: number
+  original_price_in_cents?: number // Regular price for sale items
   compare_at_price_in_cents?: number
   cost_per_item_in_cents?: number
+  discount_percentage?: number
+  sale_price_start?: Date
+  sale_price_end?: Date
   stock_quantity: number
   low_stock_threshold?: number
+  backorders_allowed: boolean
+  sold_individually: boolean
   weight?: number
   weight_unit?: string
-  product_type?: string
+  length?: number
+  width?: number
+  height?: number
+  product_type?: "simple" | "variable" | "boot" | "frame" | "wheel" | "bearing" | "helmet" | "accessory" | "package"
+  product_type_details?: ProductTypeDetails
   status: "draft" | "published" | "archived"
+  visibility: "visible" | "catalog" | "search" | "hidden"
   is_active: boolean
   is_featured: boolean
   deal_of_the_day: boolean
+  allow_reviews: boolean
+  purchase_note?: string
   image_url?: string
+  video_url?: string
+  video_thumbnail?: string
   meta_title?: string
   meta_description?: string
+  // Attributes for variable products
+  attributes?: ProductAttribute[]
+  // Default attribute values
+  default_attributes?: Record<string, string>
+  // Related products
+  upsell_ids?: string[]
+  cross_sell_ids?: string[]
+  // Grouped products (for packages)
+  grouped_product_ids?: string[]
+  // Parent product ID (for variations)
+  parent_id?: string
+  // Shipping class
+  shipping_class?: string
+  // Tax settings
+  tax_status?: "taxable" | "shipping" | "none"
+  tax_class?: string
+  // Features list
+  features?: string[]
+  // Tags
+  tags?: string[]
+  // Specifications stored as JSON
+  specifications?: Record<string, string>
+  created_at: Date
+  updated_at: Date
+}
+
+// Product Attribute for variable products
+export interface ProductAttribute {
+  name: string
+  values: string[]
+  visible: boolean
+  variation: boolean // Used for variations
+}
+
+// Product Type Details for specific product types
+export interface ProductTypeDetails {
+  // Boot specific
+  sizes?: string // Comma separated sizes
+  colors?: string // Comma separated colors
+  mounting?: string
+  shell?: string // Carbon fiber composition
+  upper_material?: string
+  inner_lining?: string
+  heat_moldable?: boolean
+  closure_system?: string
+  // Frame specific
+  frame_sizes?: string
+  frame_colors?: string
+  wheel_setup?: string
+  frame_length?: string
+  mount_separation?: string
+  material?: string
+  // Wheel specific
+  wheel_sizes?: string
+  wheel_hardness?: string
+  wheel_type?: string
+  // Helmet specific
+  helmet_sizes?: string
+  visor_included?: boolean
+  visor_type?: string
+  certification?: string
+  // Accessory specific
+  accessory_type?: string
+  thickness?: string
+  custom_name?: string
+  // Package specific
+  boot_sizes?: string
+  frame_type?: string
+  included_items?: string[]
+}
+
+// Product Variation for variable products
+export interface ProductVariation {
+  _id?: ObjectId
+  id?: string
+  parent_id: string
+  sku?: string
+  price_in_cents: number
+  original_price_in_cents?: number
+  stock_quantity: number
+  image_url?: string
+  attributes: Record<string, string> // e.g., { "Size": "EU38", "Color": "Gold" }
+  is_active: boolean
+  position: number
   created_at: Date
   updated_at: Date
 }
