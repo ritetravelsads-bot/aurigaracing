@@ -9,8 +9,9 @@ import { handleSuccessfulPayment } from "@/app/actions/stripe"
 export default async function CheckoutSuccessPage({
   searchParams,
 }: {
-  searchParams: { session_id?: string; order_id?: string }
+  searchParams: Promise<{ session_id?: string; order_id?: string }>
 }) {
+  const params = await searchParams
   const supabase = await createServerClient()
 
   const {
@@ -21,8 +22,8 @@ export default async function CheckoutSuccessPage({
     redirect("/auth/login")
   }
 
-  const sessionId = searchParams.session_id
-  const orderId = searchParams.order_id
+  const sessionId = params.session_id
+  const orderId = params.order_id
 
   if (sessionId && orderId) {
     const result = await handleSuccessfulPayment(sessionId, orderId)

@@ -8,7 +8,8 @@ import { CancelOrderButton } from "@/components/cancel-order-button"
 import { Badge } from "@/components/ui/badge"
 import { OrderTrackingDisplay } from "@/components/order-tracking-display"
 
-export default async function OrderDetailPage({ params }: { params: { id: string } }) {
+export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const {
@@ -27,7 +28,7 @@ export default async function OrderDetailPage({ params }: { params: { id: string
         product:products(*)
       )
     `)
-    .eq("id", params.id)
+    .eq("id", id)
     .eq("user_id", user.id)
     .single()
 

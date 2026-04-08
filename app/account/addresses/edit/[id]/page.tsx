@@ -2,7 +2,8 @@ import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 import { AddressForm } from "@/components/address-form"
 
-export default async function EditAddressPage({ params }: { params: { id: string } }) {
+export default async function EditAddressPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const {
@@ -15,7 +16,7 @@ export default async function EditAddressPage({ params }: { params: { id: string
   const { data: address } = await supabase
     .from("addresses")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id)
     .eq("user_id", user.id)
     .single()
 

@@ -16,8 +16,10 @@ const EXCLUDED_ROUTES = [
   "api",
 ]
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  if (EXCLUDED_ROUTES.includes(params.slug)) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  
+  if (EXCLUDED_ROUTES.includes(slug)) {
     return {
       title: "Page Not Found",
     }
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const { data: page, error } = await supabase
     .from("front_pages")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .eq("is_published", true)
     .maybeSingle()
 
@@ -49,8 +51,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function DynamicPage({ params }: { params: { slug: string } }) {
-  if (EXCLUDED_ROUTES.includes(params.slug)) {
+export default async function DynamicPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  
+  if (EXCLUDED_ROUTES.includes(slug)) {
     notFound()
   }
 
@@ -59,7 +63,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
   const { data: page, error } = await supabase
     .from("front_pages")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .eq("is_published", true)
     .maybeSingle()
 
