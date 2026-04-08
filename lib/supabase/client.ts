@@ -1,7 +1,3 @@
-import { createBrowserClient as createSupabaseBrowserClient } from "@supabase/ssr"
-
-export function createClient() {
-  return createSupabaseBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
-}
-
-export const createBrowserClient = createClient
+// Re-export from MongoDB implementation
+// This file maintains backwards compatibility with existing imports
+export { createClient, createBrowserClient } from "@/lib/mongodb/browser"

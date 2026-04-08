@@ -9,6 +9,7 @@ import { Hero3DScene } from "@/components/hero-3d-scene"
 import { AnimatedParticles } from "@/components/animated-particles"
 import { Hoodie3D } from "@/components/hoodie-3d"
 import { createClient } from "@/lib/supabase/server"
+import { getProductsByCategory } from "@/lib/mongodb/helpers"
 import Bootie3D from "@/components/bootie-3d"
 import { Helmet3D } from "@/components/helmet-3d"
 import { HeroBannerSlider } from "@/components/hero-banner-slider" // Added hero banner slider import
@@ -112,83 +113,62 @@ export default async function HomePage() {
   let packagesProducts: any[] = []
 
   if (inlineSkatingCategory?.id) {
-    // Changed variable name to match original fetch
-    const { data, error } = await supabase
-      .from("products")
-      .select("*, product_categories!inner(category_id)") // Adjusted select to include product_categories relationship
-      .eq("product_categories.category_id", inlineSkatingCategory.id) // Changed variable name
-      .eq("is_active", true)
-      .eq("status", "published")
-      .limit(8)
-
-    if (error) {
+    try {
+      inlineProducts = await getProductsByCategory(inlineSkatingCategory.id, {
+        isActive: true,
+        status: "published",
+        limit: 8,
+      })
+    } catch (error) {
       console.error("[v0] Error fetching inline products:", error)
-    } else {
-      inlineProducts = data || []
     }
   }
 
   if (bootsCategory?.id) {
-    const { data, error } = await supabase
-      .from("products")
-      .select("*, product_categories!inner(category_id)")
-      .eq("product_categories.category_id", bootsCategory.id)
-      .eq("is_active", true)
-      .eq("status", "published")
-      .limit(8)
-
-    if (error) {
+    try {
+      bootsProducts = await getProductsByCategory(bootsCategory.id, {
+        isActive: true,
+        status: "published",
+        limit: 8,
+      })
+    } catch (error) {
       console.error("[v0] Error fetching boots products:", error)
-    } else {
-      bootsProducts = data || []
     }
   }
 
   if (framesCategory?.id) {
-    const { data, error } = await supabase
-      .from("products")
-      .select("*, product_categories!inner(category_id)")
-      .eq("product_categories.category_id", framesCategory.id)
-      .eq("is_active", true)
-      .eq("status", "published")
-      .limit(8)
-
-    if (error) {
+    try {
+      framesProducts = await getProductsByCategory(framesCategory.id, {
+        isActive: true,
+        status: "published",
+        limit: 8,
+      })
+    } catch (error) {
       console.error("[v0] Error fetching frames products:", error)
-    } else {
-      framesProducts = data || []
     }
   }
 
   if (wheelsCategory?.id) {
-    const { data, error } = await supabase
-      .from("products")
-      .select("*, product_categories!inner(category_id)")
-      .eq("product_categories.category_id", wheelsCategory.id)
-      .eq("is_active", true)
-      .eq("status", "published")
-      .limit(8)
-
-    if (error) {
+    try {
+      wheelsProducts = await getProductsByCategory(wheelsCategory.id, {
+        isActive: true,
+        status: "published",
+        limit: 8,
+      })
+    } catch (error) {
       console.error("[v0] Error fetching wheels products:", error)
-    } else {
-      wheelsProducts = data || []
     }
   }
 
   if (packagesCategory?.id) {
-    const { data, error } = await supabase
-      .from("products")
-      .select("*, product_categories!inner(category_id)")
-      .eq("product_categories.category_id", packagesCategory.id)
-      .eq("is_active", true)
-      .eq("status", "published")
-      .limit(8) // Changed limit to 8 for consistency with other product fetches
-
-    if (error) {
+    try {
+      packagesProducts = await getProductsByCategory(packagesCategory.id, {
+        isActive: true,
+        status: "published",
+        limit: 8,
+      })
+    } catch (error) {
       console.error("[v0] Error fetching packages products:", error)
-    } else {
-      packagesProducts = data || []
     }
   }
 

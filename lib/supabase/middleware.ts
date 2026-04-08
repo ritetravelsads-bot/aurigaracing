@@ -1,39 +1,48 @@
-import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
+import { getDb, ObjectId } from "@/lib/mongodb/client"
+import type { Session, User } from "@/lib/mongodb/models"
+
+const SESSION_COOKIE_NAME = "auth_session"
 
 export async function updateSession(request: NextRequest) {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY
+  const db = await getDb()
 
-  // If no Supabase credentials, skip auth checks and continue
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.next({
-      request,
-    })
+  // If no database connection, skip auth checks and continue
+  if (!db) {
+    return NextResponse.next({ request })
   }
 
-  let supabaseResponse = NextResponse.next({
-    request,
-  })
+  let supabaseResponse = NextResponse.next({ request })
 
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll()
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-        supabaseResponse = NextResponse.next({
-          request,
+  // Get session from cookie
+  const sessionToken = request.cookies.get(SESSION_COOKIE_NAME)?.value
+
+  let user: (User & { id: string }) | null = null
+
+  if (sessionToken) {
+    try {
+      const sessionsCollection = db.collection<Session>("sessions")
+      const session = await sessionsCollection.findOne({
+        token: sessionToken,
+        expires_at: { $gt: new Date() },
+      })
+
+      if (session) {
+        const usersCollection = db.collection<User>("users")
+        const dbUser = await usersCollection.findOne({
+          _id: new ObjectId(session.user_id),
+          is_active: true,
         })
-        cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options))
-      },
-    },
-  })
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+        if (dbUser) {
+          const { _id, password_hash, ...userData } = dbUser
+          user = { ...userData, id: _id.toHexString() } as User & { id: string }
+        }
+      }
+    } catch (error) {
+      console.error("Session validation error:", error)
+    }
+  }
 
   // Protected routes that require authentication
   const protectedPaths = ["/account", "/admin", "/manager", "/checkout"]
@@ -48,9 +57,7 @@ export async function updateSession(request: NextRequest) {
 
   // Role-based access control
   if (user && request.nextUrl.pathname.startsWith("/admin")) {
-    const { data: userData } = await supabase.from("users").select("role").eq("id", user.id).single()
-
-    if (userData?.role !== "admin") {
+    if (user.role !== "admin") {
       const url = request.nextUrl.clone()
       url.pathname = "/"
       return NextResponse.redirect(url)
@@ -58,9 +65,7 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (user && request.nextUrl.pathname.startsWith("/manager")) {
-    const { data: userData } = await supabase.from("users").select("role").eq("id", user.id).single()
-
-    if (userData?.role !== "manager" && userData?.role !== "admin") {
+    if (user.role !== "manager" && user.role !== "admin") {
       const url = request.nextUrl.clone()
       url.pathname = "/"
       return NextResponse.redirect(url)
