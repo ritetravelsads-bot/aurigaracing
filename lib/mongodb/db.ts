@@ -21,7 +21,7 @@ class QueryBuilder<T extends Document> {
   private skipValue: number | null = null
   private selectFields: string[] | null = null
   private singleResult = false
-  private maybeSingle = false
+  private maybeSingleResult = false
   private countOnly = false
   private headOnly = false
 
@@ -150,7 +150,7 @@ class QueryBuilder<T extends Document> {
   }
 
   maybeSingle() {
-    this.maybeSingle = true
+    this.maybeSingleResult = true
     return this
   }
 
@@ -161,7 +161,7 @@ class QueryBuilder<T extends Document> {
     try {
       const db = await getDb()
       if (!db) {
-        const result = { data: this.singleResult || this.maybeSingle ? null : [], error: null, count: 0 }
+        const result = { data: this.singleResult || this.maybeSingleResult ? null : [], error: null, count: 0 }
         return onfulfilled ? onfulfilled(result) : (result as unknown as TResult1)
       }
 
@@ -187,7 +187,7 @@ class QueryBuilder<T extends Document> {
         cursor = cursor.limit(this.limitValue)
       }
 
-      if (this.singleResult || this.maybeSingle) {
+      if (this.singleResult || this.maybeSingleResult) {
         const doc = await cursor.limit(1).next()
         const result = { data: normalizeDoc(doc), error: null }
         return onfulfilled ? onfulfilled(result) : (result as unknown as TResult1)
