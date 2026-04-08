@@ -79,11 +79,11 @@ export function CategoryBar() {
         <NavigationMenu className="max-w-full justify-start">
           <NavigationMenuList className="flex-wrap gap-2">
             <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className="inline-flex h-10 items-center px-4 py-2 text-sm font-medium hover:text-[#bd9131] transition-colors">
+              <NavigationMenuLink asChild>
+                <Link href="/about" className="inline-flex h-10 items-center px-4 py-2 text-sm font-medium hover:text-[#bd9131] transition-colors">
                   About
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
 
             {categories.map((category) => (
@@ -94,33 +94,33 @@ export function CategoryBar() {
                     <NavigationMenuContent>
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                         <li>
-                          <Link href={`/products/category/${category.slug}`} legacyBehavior passHref>
-                            <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <NavigationMenuLink asChild>
+                            <Link href={`/products/category/${category.slug}`} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                               <div className="text-sm font-medium leading-none">View All {category.name}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                                 Browse all products in this category
                               </p>
-                            </NavigationMenuLink>
-                          </Link>
+                            </Link>
+                          </NavigationMenuLink>
                         </li>
                         {category.subcategories.map((sub) => (
                           <li key={sub.id}>
-                            <Link href={`/products/category/${sub.slug}`} legacyBehavior passHref>
-                              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <NavigationMenuLink asChild>
+                              <Link href={`/products/category/${sub.slug}`} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                                 <div className="text-sm font-medium leading-none">{sub.name}</div>
-                              </NavigationMenuLink>
-                            </Link>
+                              </Link>
+                            </NavigationMenuLink>
                           </li>
                         ))}
                       </ul>
                     </NavigationMenuContent>
                   </>
                 ) : (
-                  <Link href={`/products/category/${category.slug}`} legacyBehavior passHref>
-                    <NavigationMenuLink className="inline-flex h-10 items-center px-4 py-2 text-sm font-medium hover:text-[#bd9131] transition-colors">
+                  <NavigationMenuLink asChild>
+                    <Link href={`/products/category/${category.slug}`} className="inline-flex h-10 items-center px-4 py-2 text-sm font-medium hover:text-[#bd9131] transition-colors">
                       {category.name}
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 )}
               </NavigationMenuItem>
             ))}
