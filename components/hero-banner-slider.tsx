@@ -1,9 +1,8 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const banners = [
@@ -31,16 +30,7 @@ export function HeroBannerSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [progress, setProgress] = useState(0)
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % banners.length)
-    setProgress(0)
-  }, [])
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length)
-    setProgress(0)
-  }, [])
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("left")
 
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -48,6 +38,7 @@ export function HeroBannerSlider() {
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
+          setSlideDirection("left")
           setCurrentSlide((current) => (current + 1) % banners.length)
           return 0
         }
@@ -58,17 +49,8 @@ export function HeroBannerSlider() {
     return () => clearInterval(progressInterval)
   }, [isAutoPlaying, currentSlide])
 
-  const handleNavigation = (direction: "prev" | "next") => {
-    if (direction === "prev") {
-      prevSlide()
-    } else {
-      nextSlide()
-    }
-    setIsAutoPlaying(false)
-    setTimeout(() => setIsAutoPlaying(true), 10000)
-  }
-
   const goToSlide = (index: number) => {
+    setSlideDirection(index > currentSlide ? "left" : "right")
     setCurrentSlide(index)
     setProgress(0)
     setIsAutoPlaying(false)
@@ -77,53 +59,40 @@ export function HeroBannerSlider() {
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-black">
-      {/* Slides - Full Width Images (1500x450 aspect ratio) */}
-      {banners.map((banner, index) => (
-        <Link
-          href={banner.link}
-          key={banner.id}
-          className={cn(
-            "absolute inset-0 transition-all duration-700 ease-out cursor-pointer",
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-          )}
-        >
-          <Image
-            src={banner.image || "/placeholder.svg"}
-            alt={banner.alt}
-            fill
-            className="object-cover object-center"
-            priority={index === 0}
-            sizes="100vw"
-          />
-        </Link>
-      ))}
+      {/* Slides - Full Width Images with Slide Animation */}
+      {banners.map((banner, index) => {
+        const isActive = index === currentSlide
+        const isPrev = index === (currentSlide - 1 + banners.length) % banners.length
+        const isNext = index === (currentSlide + 1) % banners.length
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => handleNavigation("prev")}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/30 bg-black/40 backdrop-blur-sm text-white flex items-center justify-center transition-all hover:bg-[#bd9131] hover:border-[#bd9131] hover:scale-110"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </button>
-      <button
-        onClick={() => handleNavigation("next")}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/30 bg-black/40 backdrop-blur-sm text-white flex items-center justify-center transition-all hover:bg-[#bd9131] hover:border-[#bd9131] hover:scale-110"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </button>
+        return (
+          <Link
+            href={banner.link}
+            key={banner.id}
+            className={cn(
+              "absolute inset-0 cursor-pointer transition-transform duration-700 ease-in-out",
+              isActive && "z-20 translate-x-0",
+              !isActive && slideDirection === "left" && isPrev && "z-10 -translate-x-full",
+              !isActive && slideDirection === "left" && isNext && "z-10 translate-x-full",
+              !isActive && slideDirection === "right" && isPrev && "z-10 -translate-x-full",
+              !isActive && slideDirection === "right" && isNext && "z-10 translate-x-full",
+              !isActive && !isPrev && !isNext && "z-0 translate-x-full opacity-0"
+            )}
+          >
+            <Image
+              src={banner.image || "/placeholder.svg"}
+              alt={banner.alt}
+              fill
+              className="object-cover object-center"
+              priority={index === 0}
+              sizes="100vw"
+            />
+          </Link>
+        )
+      })}
 
-      {/* Bottom Navigation */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
-        {/* Slide Counter */}
-        <div className="hidden md:flex items-center gap-1.5 text-white/80 font-mono text-sm bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full">
-          <span className="text-[#bd9131] font-bold">{String(currentSlide + 1).padStart(2, "0")}</span>
-          <span className="text-white/50">/</span>
-          <span>{String(banners.length).padStart(2, "0")}</span>
-        </div>
-
-        {/* Progress Dots */}
+      {/* Bottom Navigation - Progress Dots Only */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30">
         <div className="flex gap-3 bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full">
           {banners.map((_, index) => (
             <button
