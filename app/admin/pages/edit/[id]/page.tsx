@@ -2,7 +2,8 @@ import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
 import { PageForm } from "@/components/page-form"
 
-export default async function EditPagePage({ params }: { params: { id: string } }) {
+export default async function EditPagePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const {
@@ -18,7 +19,7 @@ export default async function EditPagePage({ params }: { params: { id: string } 
     redirect("/")
   }
 
-  const { data: page } = await supabase.from("front_pages").select("*").eq("id", params.id).single()
+  const { data: page } = await supabase.from("front_pages").select("*").eq("id", id).single()
 
   if (!page) {
     redirect("/admin/pages")

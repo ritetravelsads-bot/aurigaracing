@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
 
-export default async function EditCategoryPage({ params }: { params: { id: string } }) {
+export default async function EditCategoryPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const {
@@ -21,7 +22,7 @@ export default async function EditCategoryPage({ params }: { params: { id: strin
     redirect("/")
   }
 
-  const { data: category } = await supabase.from("categories").select("*").eq("id", params.id).single()
+  const { data: category } = await supabase.from("categories").select("*").eq("id", id).single()
 
   if (!category) {
     redirect("/admin/categories")

@@ -13,7 +13,7 @@ export const metadata = {
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: {
+  searchParams: Promise<{
     category?: string
     search?: string
     brand?: string
@@ -24,8 +24,9 @@ export default async function ProductsPage({
     minPrice?: string
     maxPrice?: string
     sort?: string
-  }
+  }>
 }) {
+  const params = await searchParams
   const supabase = await createClient()
 
   // Fetch categories
@@ -39,12 +40,12 @@ export default async function ProductsPage({
   // Build query
   let query = supabase.from("products").select("*").eq("is_active", true)
 
-  if (searchParams.category) {
+  if (params.category) {
     // Use product_categories junction table
     const { data: productCategories } = await supabase
       .from("product_categories")
       .select("product_id")
-      .eq("category_id", searchParams.category)
+      .eq("category_id", params.category)
 
     const productIds = productCategories?.map((pc) => pc.product_id) || []
     if (productIds.length > 0) {
@@ -55,49 +56,49 @@ export default async function ProductsPage({
     }
   }
 
-  if (searchParams.search) {
+  if (params.search) {
     query = query.or(
-      `name.ilike.%${searchParams.search}%,description.ilike.%${searchParams.search}%,brand.ilike.%${searchParams.search}%,sku.ilike.%${searchParams.search}%`,
+      `name.ilike.%${params.search}%,description.ilike.%${params.search}%,brand.ilike.%${params.search}%,sku.ilike.%${params.search}%`,
     )
   }
 
-  if (searchParams.brand) {
-    query = query.eq("brand", searchParams.brand)
+  if (params.brand) {
+    query = query.eq("brand", params.brand)
   }
 
-  if (searchParams.product_type) {
-    query = query.eq("product_type", searchParams.product_type)
+  if (params.product_type) {
+    query = query.eq("product_type", params.product_type)
   }
 
-  if (searchParams.status) {
-    query = query.eq("status", searchParams.status)
+  if (params.status) {
+    query = query.eq("status", params.status)
   } else {
     // Default to published only for customers
     query = query.eq("status", "published")
   }
 
-  if (searchParams.stock === "in_stock") {
+  if (params.stock === "in_stock") {
     query = query.gt("stock_quantity", 0)
-  } else if (searchParams.stock === "out_of_stock") {
+  } else if (params.stock === "out_of_stock") {
     query = query.lte("stock_quantity", 0)
   }
 
-  if (searchParams.deal === "true") {
+  if (params.deal === "true") {
     query = query.eq("deal_of_the_day", true)
   }
 
-  if (searchParams.minPrice) {
-    const minPriceCents = Number.parseFloat(searchParams.minPrice) * 100
+  if (params.minPrice) {
+    const minPriceCents = Number.parseFloat(params.minPrice) * 100
     query = query.gte("price_in_cents", minPriceCents)
   }
 
-  if (searchParams.maxPrice) {
-    const maxPriceCents = Number.parseFloat(searchParams.maxPrice) * 100
+  if (params.maxPrice) {
+    const maxPriceCents = Number.parseFloat(params.maxPrice) * 100
     query = query.lte("price_in_cents", maxPriceCents)
   }
 
   // Apply sorting
-  const sortBy = searchParams.sort || "created_at"
+  const sortBy = params.sort || "created_at"
   if (sortBy === "price_asc") {
     query = query.order("price_in_cents", { ascending: true })
   } else if (sortBy === "price_desc") {
@@ -142,14 +143,14 @@ export default async function ProductsPage({
               </p>
 
               {/* Active Filters Display */}
-              {Object.keys(searchParams).length > 0 && (
+              {Object.keys(params).length > 0 && (
                 <div className="flex gap-2 flex-wrap">
-                  {searchParams.search && (
+                  {params.search && (
                     <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded">
-                      Search: {searchParams.search}
+                      Search: {params.search}
                     </span>
                   )}
-                  {searchParams.deal === "true" && (
+                  {params.deal === "true" && (
                     <span className="text-sm bg-primary/10 text-primary px-2 py-1 rounded">Deal of the Day</span>
                   )}
                 </div>
