@@ -1,5 +1,8 @@
 "use client"
 
+// Store for auth state change listeners
+const authListeners = new Set<(event: string, session: { user: unknown } | null) => void>()
+
 // Client-side auth operations that call API routes
 export function createClient() {
   return {
@@ -42,6 +45,8 @@ export function createClient() {
           if (!response.ok) {
             return { data: { user: null }, error: new Error(data.error || "Sign up failed") }
           }
+          // Notify listeners about sign in
+          authListeners.forEach((callback) => callback("SIGNED_IN", { user: data.user }))
           return { data: { user: data.user }, error: null }
         } catch (error) {
           return { data: { user: null }, error }
@@ -59,6 +64,8 @@ export function createClient() {
           if (!response.ok) {
             return { data: { user: null, session: null }, error: new Error(data.error || "Login failed") }
           }
+          // Notify listeners about sign in
+          authListeners.forEach((callback) => callback("SIGNED_IN", { user: data.user }))
           return { data: { user: data.user, session: {} }, error: null }
         } catch (error) {
           return { data: { user: null, session: null }, error }
@@ -70,9 +77,26 @@ export function createClient() {
             method: "POST",
             credentials: "include",
           })
+          // Notify all listeners about sign out
+          authListeners.forEach((callback) => callback("SIGNED_OUT", null))
           return { error: null }
         } catch (error) {
           return { error }
+        }
+      },
+      onAuthStateChange: (callback: (event: string, session: { user: unknown } | null) => void) => {
+        // Add to listeners
+        authListeners.add(callback)
+        
+        // Return subscription object with unsubscribe method
+        return {
+          data: {
+            subscription: {
+              unsubscribe: () => {
+                authListeners.delete(callback)
+              },
+            },
+          },
         }
       },
     },
@@ -130,6 +154,10 @@ function createClientQueryBuilder(
     },
     is: (field: string, value: unknown) => {
       filters[field] = { $is: value }
+      return builder
+    },
+    or: (orFilter: string) => {
+      filters._or = orFilter
       return builder
     },
     order: (field: string, opts?: { ascending?: boolean }) => {
