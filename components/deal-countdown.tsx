@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
-import { Clock, Flame } from "lucide-react"
+import { Flame } from "lucide-react"
 
 function getEndOfDay() {
   const now = new Date()
@@ -31,28 +31,17 @@ function TimeBlock({ value, label, isUrgent }: TimeBlockProps) {
   return (
     <div className="flex flex-col items-center">
       <div className={cn(
-        "relative w-16 h-16 md:w-20 md:h-20 rounded-lg flex items-center justify-center overflow-hidden",
-        "bg-black shadow-lg",
-        isUrgent && "animate-pulse-glow"
+        "w-10 h-10 md:w-12 md:h-12 rounded bg-black flex items-center justify-center shadow",
+        isUrgent && "ring-1 ring-red-500"
       )}>
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(189, 145, 49, 0.5) 1px, transparent 0)`,
-          backgroundSize: '8px 8px'
-        }} />
-        
-        {/* Value */}
         <span className={cn(
-          "text-2xl md:text-3xl font-bold tabular-nums relative z-10",
-          isUrgent ? "text-[#bd9131]" : "text-white"
+          "text-base md:text-lg font-bold tabular-nums",
+          isUrgent ? "text-red-500" : "text-white"
         )}>
           {String(value).padStart(2, '0')}
         </span>
-        
-        {/* Shine Effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
       </div>
-      <span className="text-xs md:text-sm text-muted-foreground mt-2 font-medium uppercase tracking-wider">
+      <span className="text-[10px] text-muted-foreground mt-1 font-medium uppercase tracking-wide">
         {label}
       </span>
     </div>
@@ -61,10 +50,10 @@ function TimeBlock({ value, label, isUrgent }: TimeBlockProps) {
 
 function Separator() {
   return (
-    <div className="flex flex-col justify-center h-16 md:h-20">
-      <div className="space-y-1.5">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#bd9131] animate-pulse" />
-        <div className="w-1.5 h-1.5 rounded-full bg-[#bd9131] animate-pulse animation-delay-200" />
+    <div className="flex flex-col justify-center h-10 md:h-12">
+      <div className="space-y-1">
+        <div className="w-1 h-1 rounded-full bg-[#bd9131]" />
+        <div className="w-1 h-1 rounded-full bg-[#bd9131]" />
       </div>
     </div>
   )
@@ -85,14 +74,14 @@ export function DealCountdown() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center justify-center gap-3 md:gap-4">
+      <div className="flex items-center justify-center gap-2">
         <TimeBlock value={0} label="Days" />
         <Separator />
-        <TimeBlock value={0} label="Hours" />
+        <TimeBlock value={0} label="Hrs" />
         <Separator />
-        <TimeBlock value={0} label="Mins" />
+        <TimeBlock value={0} label="Min" />
         <Separator />
-        <TimeBlock value={0} label="Secs" />
+        <TimeBlock value={0} label="Sec" />
       </div>
     )
   }
@@ -100,25 +89,23 @@ export function DealCountdown() {
   const isUrgent = time.days === 0 && time.hours < 2
 
   return (
-    <div className="space-y-4">
-      {/* Urgency Indicator */}
+    <div className="space-y-2">
       {isUrgent && (
-        <div className="flex items-center justify-center gap-2 text-red-500 animate-pulse">
-          <Flame className="w-5 h-5" />
-          <span className="text-sm font-bold uppercase tracking-wider">Hurry! Almost Over</span>
-          <Flame className="w-5 h-5" />
+        <div className="flex items-center justify-center gap-1 text-red-500">
+          <Flame className="w-3 h-3" />
+          <span className="text-[10px] font-semibold uppercase tracking-wide">Almost Over</span>
+          <Flame className="w-3 h-3" />
         </div>
       )}
       
-      {/* Countdown Timer */}
-      <div className="flex items-center justify-center gap-3 md:gap-4">
+      <div className="flex items-center justify-center gap-2">
         <TimeBlock value={time.days} label="Days" isUrgent={isUrgent} />
         <Separator />
-        <TimeBlock value={time.hours} label="Hours" isUrgent={isUrgent} />
+        <TimeBlock value={time.hours} label="Hrs" isUrgent={isUrgent} />
         <Separator />
-        <TimeBlock value={time.minutes} label="Mins" isUrgent={isUrgent} />
+        <TimeBlock value={time.minutes} label="Min" isUrgent={isUrgent} />
         <Separator />
-        <TimeBlock value={time.seconds} label="Secs" isUrgent={isUrgent} />
+        <TimeBlock value={time.seconds} label="Sec" isUrgent={isUrgent} />
       </div>
     </div>
   )
