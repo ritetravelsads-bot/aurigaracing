@@ -4,7 +4,27 @@ if (!process.env.MONGODB_URI) {
   console.warn("MONGODB_URI not set - using fallback client")
 }
 
-const uri = process.env.MONGODB_URI || ""
+// Handle special characters in MongoDB URI password
+function encodeMongoUri(rawUri: string): string {
+  if (!rawUri) return rawUri
+  
+  try {
+    // Parse the URI to extract and encode the password
+    const match = rawUri.match(/^(mongodb(?:\+srv)?:\/\/)([^:]+):([^@]+)@(.+)$/)
+    if (match) {
+      const [, protocol, username, password, rest] = match
+      // Encode username and password to handle special characters
+      const encodedUsername = encodeURIComponent(username)
+      const encodedPassword = encodeURIComponent(password)
+      return `${protocol}${encodedUsername}:${encodedPassword}@${rest}`
+    }
+    return rawUri
+  } catch {
+    return rawUri
+  }
+}
+
+const uri = encodeMongoUri(process.env.MONGODB_URI || "")
 const options = {}
 
 let client: MongoClient | null = null
