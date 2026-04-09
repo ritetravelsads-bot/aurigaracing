@@ -5,12 +5,12 @@ if (!process.env.MONGODB_URI) {
 }
 
 // Handle special characters in MongoDB URI password
+// Only encode if not already encoded to avoid double-encoding
 function encodeMongoUri(rawUri: string): string {
   if (!rawUri) return rawUri
   
   try {
     // Use URL API to properly parse and encode the MongoDB URI
-    // First, replace mongodb+srv:// or mongodb:// with a standard protocol for parsing
     const isAtlas = rawUri.startsWith("mongodb+srv://")
     const protocol = isAtlas ? "mongodb+srv://" : "mongodb://"
     const withoutProtocol = rawUri.replace(/^mongodb(\+srv)?:\/\//, "")
@@ -32,6 +32,27 @@ function encodeMongoUri(rawUri: string): string {
     
     const username = credentials.substring(0, colonIndex)
     const password = credentials.substring(colonIndex + 1)
+    
+    // Check if password is already URL-encoded by seeing if decoding it changes anything
+    // If decoding produces the same result, it wasn't encoded
+    // If decoding produces a different result, it was already encoded
+    let needsEncoding = true
+    try {
+      const decoded = decodeURIComponent(password)
+      // If decoded equals password, it wasn't encoded (or has no special chars)
+      // If they differ, it was already encoded - don't double encode
+      if (decoded !== password) {
+        needsEncoding = false
+      }
+    } catch {
+      // decodeURIComponent throws if there are invalid sequences like lone %
+      // This means it has unencoded special chars and needs encoding
+      needsEncoding = true
+    }
+    
+    if (!needsEncoding) {
+      return rawUri // Already properly encoded
+    }
     
     // Encode username and password
     const encodedUsername = encodeURIComponent(username)
