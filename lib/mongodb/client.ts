@@ -69,6 +69,7 @@ const options = {}
 
 let client: MongoClient | null = null
 let clientPromise: Promise<MongoClient> | null = null
+let connectionError: Error | null = null
 
 if (uri) {
   if (process.env.NODE_ENV === "development") {
@@ -76,29 +77,49 @@ if (uri) {
     // is preserved across module reloads caused by HMR (Hot Module Replacement).
     const globalWithMongo = global as typeof globalThis & {
       _mongoClientPromise?: Promise<MongoClient>
+      _mongoConnectionError?: Error | null
     }
 
     if (!globalWithMongo._mongoClientPromise) {
       client = new MongoClient(uri, options)
-      globalWithMongo._mongoClientPromise = client.connect()
+      globalWithMongo._mongoClientPromise = client.connect().catch((err) => {
+        console.error("MongoDB connection failed:", err.message)
+        globalWithMongo._mongoConnectionError = err
+        throw err
+      })
     }
     clientPromise = globalWithMongo._mongoClientPromise
+    connectionError = globalWithMongo._mongoConnectionError || null
   } else {
     // In production mode, it's best to not use a global variable.
     client = new MongoClient(uri, options)
-    clientPromise = client.connect()
+    clientPromise = client.connect().catch((err) => {
+      console.error("MongoDB connection failed:", err.message)
+      connectionError = err
+      throw err
+    })
   }
 }
 
 export async function getMongoClient(): Promise<MongoClient | null> {
   if (!clientPromise) return null
-  return clientPromise
+  try {
+    return await clientPromise
+  } catch (err) {
+    console.error("Failed to get MongoDB client:", (err as Error).message)
+    return null
+  }
 }
 
 export async function getDb(): Promise<Db | null> {
-  const client = await getMongoClient()
-  if (!client) return null
-  return client.db(process.env.MONGODB_DB_NAME || "aurigaracing")
+  try {
+    const client = await getMongoClient()
+    if (!client) return null
+    return client.db(process.env.MONGODB_DB_NAME || "aurigaracing")
+  } catch (err) {
+    console.error("Failed to get MongoDB database:", (err as Error).message)
+    return null
+  }
 }
 
 // Helper to convert string ID to ObjectId
