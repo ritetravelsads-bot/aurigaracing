@@ -24,7 +24,8 @@ export default async function ProductPage({
   const { slug } = await params
   const supabase = await createClient()
 
-  const { data: product } = await supabase
+  // First try to find by slug
+  let { data: product } = await supabase
     .from("products")
     .select(`
       *,
@@ -32,7 +33,22 @@ export default async function ProductPage({
     `)
     .eq("slug", slug)
     .eq("is_active", true)
-    .single()
+    .maybeSingle()
+
+  // If not found by slug, try to find by ID (for backwards compatibility)
+  if (!product) {
+    const { data: productById } = await supabase
+      .from("products")
+      .select(`
+        *,
+        category:categories(*)
+      `)
+      .eq("id", slug)
+      .eq("is_active", true)
+      .maybeSingle()
+    
+    product = productById
+  }
 
   if (!product) {
     notFound()

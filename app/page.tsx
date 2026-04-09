@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge"
 import { Truck, Shield, Clock, Headphones, ArrowRight, ChevronRight, Sparkles, Zap, Award, Star } from "lucide-react"
 import { getImageKitUrl } from "@/lib/imagekit"
 import { createClient } from "@/lib/supabase/server"
-import { getProductsByCategory } from "@/lib/mongodb/helpers"
 import { HeroBannerSlider } from "@/components/hero-banner-slider"
 import { EcommerceProductCard } from "@/components/ecommerce-product-card"
 import { DealCountdown } from "@/components/deal-countdown"
@@ -104,13 +103,30 @@ export default async function HomePage() {
   let wheelsProducts: any[] = []
   let packagesProducts: any[] = []
 
+  // Helper to fetch products by category from Supabase
+  async function fetchProductsByCategory(categoryId: string, limit: number = 8) {
+    const { data: productCategories } = await supabase
+      .from("product_categories")
+      .select("product_id")
+      .eq("category_id", categoryId)
+
+    const productIds = productCategories?.map((pc) => pc.product_id) || []
+    if (productIds.length === 0) return []
+
+    const { data: products } = await supabase
+      .from("products")
+      .select("*")
+      .in("id", productIds)
+      .eq("is_active", true)
+      .eq("status", "published")
+      .limit(limit)
+
+    return products || []
+  }
+
   if (inlineSkatingCategory?.id) {
     try {
-      inlineProducts = await getProductsByCategory(inlineSkatingCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      inlineProducts = await fetchProductsByCategory(inlineSkatingCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching inline products:", error)
     }
@@ -118,11 +134,7 @@ export default async function HomePage() {
 
   if (bootsCategory?.id) {
     try {
-      bootsProducts = await getProductsByCategory(bootsCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      bootsProducts = await fetchProductsByCategory(bootsCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching boots products:", error)
     }
@@ -130,11 +142,7 @@ export default async function HomePage() {
 
   if (framesCategory?.id) {
     try {
-      framesProducts = await getProductsByCategory(framesCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      framesProducts = await fetchProductsByCategory(framesCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching frames products:", error)
     }
@@ -142,11 +150,7 @@ export default async function HomePage() {
 
   if (wheelsCategory?.id) {
     try {
-      wheelsProducts = await getProductsByCategory(wheelsCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      wheelsProducts = await fetchProductsByCategory(wheelsCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching wheels products:", error)
     }
@@ -154,11 +158,7 @@ export default async function HomePage() {
 
   if (packagesCategory?.id) {
     try {
-      packagesProducts = await getProductsByCategory(packagesCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      packagesProducts = await fetchProductsByCategory(packagesCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching packages products:", error)
     }
