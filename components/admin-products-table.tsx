@@ -80,7 +80,7 @@ export function AdminProductsTable({ products }: AdminProductsTableProps) {
         product.name.toLowerCase().includes(searchLower) ||
         product.sku?.toLowerCase().includes(searchLower) ||
         product.brand?.toLowerCase().includes(searchLower) ||
-        product.categories.some((cat) => cat.name.toLowerCase().includes(searchLower))
+        product.categories.some((cat) => cat && cat.name && cat.name.toLowerCase().includes(searchLower))
 
       const matchesStatus = statusFilter === "all" || product.status === statusFilter
 
@@ -404,16 +404,16 @@ export function AdminProductsTable({ products }: AdminProductsTableProps) {
                       <TableCell>
                         <div className="space-y-1">
                           <p className="font-medium">{product.name}</p>
-                          {product.categories.length > 0 && (
+                          {product.categories.filter(cat => cat && cat.name).length > 0 && (
                             <div className="flex flex-wrap gap-1">
-                              {product.categories.slice(0, 2).map((cat) => (
-                                <Badge key={cat.name} variant="outline" className="text-xs">
+                              {product.categories.filter(cat => cat && cat.name).slice(0, 2).map((cat, idx) => (
+                                <Badge key={cat.name || idx} variant="outline" className="text-xs">
                                   {cat.name}
                                 </Badge>
                               ))}
-                              {product.categories.length > 2 && (
+                              {product.categories.filter(cat => cat && cat.name).length > 2 && (
                                 <Badge variant="outline" className="text-xs">
-                                  +{product.categories.length - 2}
+                                  +{product.categories.filter(cat => cat && cat.name).length - 2}
                                 </Badge>
                               )}
                             </div>

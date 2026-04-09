@@ -128,15 +128,17 @@ export default async function ProductPage({
             {/* Categories & Brand */}
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               {productCategories &&
-                productCategories.map((pc: any) => (
-                  <Link
-                    key={pc.category.id}
-                    href={`/products/category/${pc.category.slug}`}
-                    className="text-xs font-medium text-primary hover:underline uppercase tracking-wider"
-                  >
-                    {pc.category.name}
-                  </Link>
-                ))}
+                productCategories
+                  .filter((pc: any) => pc.category && pc.category.id)
+                  .map((pc: any) => (
+                    <Link
+                      key={pc.category.id}
+                      href={`/products/category/${pc.category.slug}`}
+                      className="text-xs font-medium text-primary hover:underline uppercase tracking-wider"
+                    >
+                      {pc.category.name}
+                    </Link>
+                  ))}
               {product.brand && (
                 <Badge variant="secondary" className="ml-2 font-semibold">
                   {product.brand}

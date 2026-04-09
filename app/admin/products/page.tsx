@@ -35,7 +35,9 @@ export default async function AdminProductsPage() {
   const transformedProducts =
     products?.map((product) => ({
       ...product,
-      categories: product.product_categories?.map((pc: any) => pc.categories) || [],
+      categories: product.product_categories
+        ?.map((pc: any) => pc.categories)
+        .filter((cat: any) => cat && cat.name) || [],
     })) || []
 
   return (
