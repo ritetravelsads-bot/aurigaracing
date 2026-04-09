@@ -196,54 +196,80 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 
       console.log("[v0] Product data prepared:", productData)
 
-      const { data: savedProduct, error: productError } = product
-        ? await supabase.from("products").update(productData).eq("id", product.id).select().single()
-        : await supabase.from("products").insert(productData).select().single()
+      let productId: string
 
-      if (productError) {
-        console.error("[v0] Update error:", productError)
-        throw new Error(productError.message || "Failed to update product")
+      if (product) {
+        // Update existing product
+        const { error: updateError } = await supabase
+          .from("products")
+          .update(productData)
+          .eq("id", product.id)
+
+        if (updateError) {
+          console.error("[v0] Update error:", updateError)
+          throw new Error(updateError.message || "Failed to update product")
+        }
+        productId = product.id
+        console.log("[v0] Product updated with ID:", productId)
+      } else {
+        // Insert new product
+        const { data: insertedProduct, error: insertError } = await supabase
+          .from("products")
+          .insert(productData)
+          .select("id")
+          .single()
+
+        if (insertError) {
+          console.error("[v0] Insert error:", insertError)
+          throw new Error(insertError.message || "Failed to create product")
+        }
+
+        if (!insertedProduct || !insertedProduct.id) {
+          throw new Error("Product was created but no ID was returned. Please try again.")
+        }
+
+        productId = insertedProduct.id
+        console.log("[v0] Product created with ID:", productId)
       }
 
-      await supabase
-        .from("product_categories")
-        .delete()
-        .eq("product_id", product ? product.id : savedProduct.id)
+      // Delete and re-insert product categories
+      await supabase.from("product_categories").delete().eq("product_id", productId)
 
       if (categoryIds.length > 0) {
         const categoryData = categoryIds.map((catId) => ({
-          product_id: product ? product.id : savedProduct.id,
+          product_id: productId,
           category_id: catId,
         }))
-        await supabase.from("product_categories").insert(categoryData)
+        const { error: catError } = await supabase.from("product_categories").insert(categoryData)
+        if (catError) {
+          console.error("[v0] Category insert error:", catError)
+        }
       }
 
-      await supabase
-        .from("product_gallery")
-        .delete()
-        .eq("product_id", product ? product.id : savedProduct.id)
+      // Delete and re-insert gallery images
+      await supabase.from("product_gallery").delete().eq("product_id", productId)
 
       if (gallery.length > 0) {
         const galleryData = gallery.map((url, index) => ({
-          product_id: product ? product.id : savedProduct.id,
+          product_id: productId,
           image_url: url,
           display_order: index,
           is_primary: index === 0,
         }))
-        await supabase.from("product_gallery").insert(galleryData)
+        const { error: galleryError } = await supabase.from("product_gallery").insert(galleryData)
+        if (galleryError) {
+          console.error("[v0] Gallery insert error:", galleryError)
+        }
       }
 
+      // Delete and re-insert specifications
       console.log("[v0] Saving specifications...")
-      // Delete existing specifications
-      if (product) {
-        await supabase.from("product_specifications").delete().eq("product_id", product.id)
-      }
+      await supabase.from("product_specifications").delete().eq("product_id", productId)
 
-      // Insert new specifications
       const specificationsToInsert = specifications
-        .filter((spec) => spec.key && spec.value) // Only save if both key and value exist
+        .filter((spec) => spec.key && spec.value)
         .map((spec, index) => ({
-          product_id: product ? product.id : savedProduct.id,
+          product_id: productId,
           spec_key: spec.key,
           spec_value: spec.value,
           display_order: index,
@@ -251,10 +277,22 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 
       if (specificationsToInsert.length > 0) {
         const { error: specsError } = await supabase.from("product_specifications").insert(specificationsToInsert)
-
         if (specsError) {
           console.error("[v0] Specifications save error:", specsError)
-          throw specsError
+        }
+      }
+
+      // Delete and re-insert tags
+      await supabase.from("product_tags").delete().eq("product_id", productId)
+
+      if (tags.length > 0) {
+        const tagsData = tags.map((tag) => ({
+          product_id: productId,
+          tag: tag,
+        }))
+        const { error: tagsError } = await supabase.from("product_tags").insert(tagsData)
+        if (tagsError) {
+          console.error("[v0] Tags insert error:", tagsError)
         }
       }
 
