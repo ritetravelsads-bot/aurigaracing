@@ -462,28 +462,24 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {[
-              { name: "Boots", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" },
-              { name: "Frames", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" },
-              { name: "Wheels", image: "https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?w=400&h=300&fit=crop" },
-              { name: "Bearings", image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&h=300&fit=crop" },
-              { name: "Helmets", image: "https://images.unsplash.com/photo-1557803175-2f8c4482f92c?w=400&h=300&fit=crop" },
-              { name: "Skate Packages", image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop" }
+              { name: "Boots", slug: "boots", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/boots-collection-card-51eQfr39w1HEJxQZuszK50vMSo6rZ1.jpg" },
+              { name: "Frames", slug: "frames", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/frames-collection-card-d73I4y53Q9sN4FtiShtH1BUa1EyhMO.jpg" },
+              { name: "Wheels", slug: "wheels", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheels-collection-card-NpuK0Nmgxlzi40B2IOeV6wn7mDXDm4.jpg" },
+              { name: "Bearings", slug: "bearings", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bearings-collection-card-LLUfycS9TAzKkNjfnpUpvRFZeuhpty.jpg" },
+              { name: "Helmets", slug: "helmets", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/helmets-collection-card-OcJ3JmJ4OBub3D9rMNIh67NZgtYGBW.jpg" },
+              { name: "Skate Packages", slug: "skate-packages", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/skate-packeges-collection-card-KbzSUS1LAINulQCyCPq6f63Sc4KuTF.jpg" }
             ].map((collection) => (
-              <Link key={collection.name} href="/products" className="group">
-                <Card className="overflow-hidden border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+              <Link key={collection.name} href={`/products?category=${collection.slug}`} className="group">
+                <Card className="overflow-hidden border-0 bg-black shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="aspect-square relative overflow-hidden">
                     <Image
                       src={collection.image}
-                      alt={collection.name}
+                      alt={`${collection.name} - Auriga Racing Collection`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <h3 className="text-white font-semibold text-sm">{collection.name}</h3>
-                    </div>
                   </div>
                 </Card>
               </Link>
