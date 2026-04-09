@@ -43,6 +43,8 @@ export async function POST(request: Request) {
           if (field === "_order") {
             const orderOpts = value as { field: string; ascending: boolean }
             query = query.order(orderOpts.field, { ascending: orderOpts.ascending })
+          } else if (field === "_or" && typeof value === "string") {
+            query = query.or(value)
           } else if (typeof value === "object" && value !== null) {
             const op = Object.keys(value)[0]
             const val = (value as Record<string, unknown>)[op]
@@ -71,6 +73,17 @@ export async function POST(request: Request) {
               case "$is":
                 query = query.is(field, val)
                 break
+              case "$ilike":
+                query = query.ilike(field, val as string)
+                break
+              case "$like":
+                query = query.like(field, val as string)
+                break
+              case "$not": {
+                const notVal = val as { op: string; value: unknown }
+                query = query.not(field, notVal.op, notVal.value)
+                break
+              }
             }
           }
         }

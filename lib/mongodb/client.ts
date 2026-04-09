@@ -9,16 +9,35 @@ function encodeMongoUri(rawUri: string): string {
   if (!rawUri) return rawUri
   
   try {
-    // Parse the URI to extract and encode the password
-    const match = rawUri.match(/^(mongodb(?:\+srv)?:\/\/)([^:]+):([^@]+)@(.+)$/)
-    if (match) {
-      const [, protocol, username, password, rest] = match
-      // Encode username and password to handle special characters
-      const encodedUsername = encodeURIComponent(username)
-      const encodedPassword = encodeURIComponent(password)
-      return `${protocol}${encodedUsername}:${encodedPassword}@${rest}`
+    // Use URL API to properly parse and encode the MongoDB URI
+    // First, replace mongodb+srv:// or mongodb:// with a standard protocol for parsing
+    const isAtlas = rawUri.startsWith("mongodb+srv://")
+    const protocol = isAtlas ? "mongodb+srv://" : "mongodb://"
+    const withoutProtocol = rawUri.replace(/^mongodb(\+srv)?:\/\//, "")
+    
+    // Find the last @ to split credentials from host (password may contain @)
+    const lastAtIndex = withoutProtocol.lastIndexOf("@")
+    if (lastAtIndex === -1) {
+      return rawUri // No credentials in URI
     }
-    return rawUri
+    
+    const credentials = withoutProtocol.substring(0, lastAtIndex)
+    const hostAndRest = withoutProtocol.substring(lastAtIndex + 1)
+    
+    // Find the first : to split username from password
+    const colonIndex = credentials.indexOf(":")
+    if (colonIndex === -1) {
+      return rawUri // No password, just username
+    }
+    
+    const username = credentials.substring(0, colonIndex)
+    const password = credentials.substring(colonIndex + 1)
+    
+    // Encode username and password
+    const encodedUsername = encodeURIComponent(username)
+    const encodedPassword = encodeURIComponent(password)
+    
+    return `${protocol}${encodedUsername}:${encodedPassword}@${hostAndRest}`
   } catch {
     return rawUri
   }

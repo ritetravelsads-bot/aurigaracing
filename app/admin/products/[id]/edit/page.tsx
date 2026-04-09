@@ -40,10 +40,28 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
     .eq("product_id", id)
     .order("display_order")
 
+  const { data: variationsData } = await supabase
+    .from("product_variations")
+    .select("*")
+    .eq("parent_id", id)
+    .order("position")
+
+  const variations = variationsData?.map((v: any) => ({
+    id: v.id,
+    sku: v.sku || "",
+    price: v.price_in_cents ? (v.price_in_cents / 100).toString() : "",
+    originalPrice: v.original_price_in_cents ? (v.original_price_in_cents / 100).toString() : "",
+    stockQuantity: v.stock_quantity?.toString() || "0",
+    imageUrl: v.image_url || "",
+    attributes: v.attributes || {},
+    isActive: v.is_active ?? true,
+  })) || []
+
   const productWithRelations = {
     ...product,
     categoryIds: productCategories?.map((pc) => pc.category_id) || [],
     gallery: gallery?.map((g) => g.image_url) || [],
+    variations: variations,
   }
 
   const { data: categories, error: categoriesError } = await supabase.from("categories").select("*").order("name")
