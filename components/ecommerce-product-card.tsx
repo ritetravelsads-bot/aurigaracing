@@ -25,8 +25,11 @@ interface EcommerceProductCardProps {
     stock_quantity?: number
     is_featured?: boolean
     is_new?: boolean
+    deal_of_the_day?: boolean
     rating?: number
     review_count?: number
+    product_type?: string | null
+    sku?: string
   }
   variant?: "default" | "compact"
   onAddToCart?: (productId: string) => void
@@ -124,6 +127,11 @@ export function EcommerceProductCard({
               <Badge className="bg-[#bd9131] text-black font-semibold px-1.5 py-0.5 text-[10px] border-0 flex items-center gap-0.5">
                 <Zap className="w-2.5 h-2.5" />
                 HOT
+              </Badge>
+            )}
+            {product.deal_of_the_day && (
+              <Badge className="bg-red-600 text-white font-semibold px-1.5 py-0.5 text-[10px] border-0 animate-pulse">
+                DEAL
               </Badge>
             )}
           </div>

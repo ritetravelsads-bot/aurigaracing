@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge"
 import { Truck, Shield, Clock, Headphones, ArrowRight, ChevronRight, Sparkles, Zap, Award, Star } from "lucide-react"
 import { getImageKitUrl } from "@/lib/imagekit"
 import { createClient } from "@/lib/supabase/server"
-import { getProductsByCategory } from "@/lib/mongodb/helpers"
 import { HeroBannerSlider } from "@/components/hero-banner-slider"
 import { EcommerceProductCard } from "@/components/ecommerce-product-card"
 import { DealCountdown } from "@/components/deal-countdown"
@@ -104,13 +103,30 @@ export default async function HomePage() {
   let wheelsProducts: any[] = []
   let packagesProducts: any[] = []
 
+  // Helper to fetch products by category from Supabase
+  async function fetchProductsByCategory(categoryId: string, limit: number = 8) {
+    const { data: productCategories } = await supabase
+      .from("product_categories")
+      .select("product_id")
+      .eq("category_id", categoryId)
+
+    const productIds = productCategories?.map((pc) => pc.product_id) || []
+    if (productIds.length === 0) return []
+
+    const { data: products } = await supabase
+      .from("products")
+      .select("*")
+      .in("id", productIds)
+      .eq("is_active", true)
+      .eq("status", "published")
+      .limit(limit)
+
+    return products || []
+  }
+
   if (inlineSkatingCategory?.id) {
     try {
-      inlineProducts = await getProductsByCategory(inlineSkatingCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      inlineProducts = await fetchProductsByCategory(inlineSkatingCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching inline products:", error)
     }
@@ -118,11 +134,7 @@ export default async function HomePage() {
 
   if (bootsCategory?.id) {
     try {
-      bootsProducts = await getProductsByCategory(bootsCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      bootsProducts = await fetchProductsByCategory(bootsCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching boots products:", error)
     }
@@ -130,11 +142,7 @@ export default async function HomePage() {
 
   if (framesCategory?.id) {
     try {
-      framesProducts = await getProductsByCategory(framesCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      framesProducts = await fetchProductsByCategory(framesCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching frames products:", error)
     }
@@ -142,11 +150,7 @@ export default async function HomePage() {
 
   if (wheelsCategory?.id) {
     try {
-      wheelsProducts = await getProductsByCategory(wheelsCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      wheelsProducts = await fetchProductsByCategory(wheelsCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching wheels products:", error)
     }
@@ -154,11 +158,7 @@ export default async function HomePage() {
 
   if (packagesCategory?.id) {
     try {
-      packagesProducts = await getProductsByCategory(packagesCategory.id, {
-        isActive: true,
-        status: "published",
-        limit: 8,
-      })
+      packagesProducts = await fetchProductsByCategory(packagesCategory.id, 8)
     } catch (error) {
       console.error("[v0] Error fetching packages products:", error)
     }
@@ -166,8 +166,8 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative bg-black text-white overflow-hidden h-[400px] md:h-[500px]">
+      {/* Hero Section - Full Width Image Slider (1500x450 banners - 3.33:1 aspect ratio) */}
+      <section className="relative bg-black text-white overflow-hidden w-full aspect-[1500/450]">
         <HeroBannerSlider />
       </section>
 
@@ -403,36 +403,16 @@ export default async function HomePage() {
       </section>
 
       {/* Helmets Full Width Banner */}
-      <section className="relative h-[300px] md:h-[350px] bg-black overflow-hidden group">
-        <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=800&fit=crop"
-          alt="Speed Skating Helmets"
-          fill
-          className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4">
-            <div className="max-w-md">
-              <Badge className="bg-[#bd9131]/20 text-[#bd9131] border-[#bd9131]/30 mb-3 text-xs px-2 py-0.5">
-                Safety First
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                Premium <span className="text-[#bd9131]">Helmets</span>
-              </h2>
-              <p className="text-sm text-white/80 mb-4">
-                Aerodynamic design for maximum performance and safety
-              </p>
-              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
-                <Link href="/products">
-                  Explore Collection
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Link href="/products?category=helmets" className="block">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/helmet%20banner.png-uBOFWYiQBgShACYyH5PskDyM5snSQZ.jpeg"
+            alt="Auriga Racing Helmets"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </section>
+      </Link>
 
       {/* Aero Helmets Section */}
       <section className="py-12 md:py-16 bg-gradient-to-br from-neutral-300 via-neutral-400 to-neutral-500 text-black relative overflow-hidden">
@@ -482,28 +462,24 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {[
-              { name: "Boots", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" },
-              { name: "Frames", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" },
-              { name: "Wheels", image: "https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?w=400&h=300&fit=crop" },
-              { name: "Bearings", image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&h=300&fit=crop" },
-              { name: "Helmets", image: "https://images.unsplash.com/photo-1557803175-2f8c4482f92c?w=400&h=300&fit=crop" },
-              { name: "Skate Packages", image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop" }
+              { name: "Boots", slug: "boots", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/boots-collection-card-51eQfr39w1HEJxQZuszK50vMSo6rZ1.jpg" },
+              { name: "Frames", slug: "frames", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/frames-collection-card-d73I4y53Q9sN4FtiShtH1BUa1EyhMO.jpg" },
+              { name: "Wheels", slug: "wheels", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheels-collection-card-NpuK0Nmgxlzi40B2IOeV6wn7mDXDm4.jpg" },
+              { name: "Bearings", slug: "bearings", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bearings-collection-card-LLUfycS9TAzKkNjfnpUpvRFZeuhpty.jpg" },
+              { name: "Helmets", slug: "helmets", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/helmets-collection-card-OcJ3JmJ4OBub3D9rMNIh67NZgtYGBW.jpg" },
+              { name: "Skate Packages", slug: "skate-packages", image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/skate-packeges-collection-card-KbzSUS1LAINulQCyCPq6f63Sc4KuTF.jpg" }
             ].map((collection) => (
-              <Link key={collection.name} href="/products" className="group">
-                <Card className="overflow-hidden border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300">
-                  <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+              <Link key={collection.name} href={`/products?category=${collection.slug}`} className="group">
+                <Card className="overflow-hidden border-0 bg-black shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="aspect-square relative overflow-hidden">
                     <Image
                       src={collection.image}
-                      alt={collection.name}
+                      alt={`${collection.name} - Auriga Racing Collection`}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <h3 className="text-white font-semibold text-sm">{collection.name}</h3>
-                    </div>
                   </div>
                 </Card>
               </Link>
@@ -580,36 +556,16 @@ export default async function HomePage() {
       </section>
 
       {/* Boots Full Width Banner */}
-      <section className="relative h-[300px] md:h-[350px] bg-black overflow-hidden group">
-        <Image
-          src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=1920&h=800&fit=crop"
-          alt="Inline Skate Boots"
-          fill
-          className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-l from-black via-black/70 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-end">
-          <div className="container mx-auto px-4">
-            <div className="max-w-md ml-auto text-right">
-              <Badge className="bg-[#bd9131]/20 text-[#bd9131] border-[#bd9131]/30 mb-3 text-xs px-2 py-0.5">
-                Precision Engineering
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                Precision <span className="text-[#bd9131]">Boots</span>
-              </h2>
-              <p className="text-sm text-white/80 mb-4">
-                Handcrafted perfection for elite athletes
-              </p>
-              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
-                <Link href="/products">
-                  Explore Collection
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Link href="/products?category=boots" className="block">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/boots%20banner.png-nWYUMWEuuxXDmkm9XbGypSImTxeSCM.jpeg"
+            alt="Auriga Racing Boots - Engineered for Speed and Precision"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </section>
+      </Link>
 
       {/* Boots Products Section */}
       {bootsProducts && bootsProducts.length > 0 && (
@@ -679,36 +635,16 @@ export default async function HomePage() {
       </section>
 
       {/* Frames Full Width Banner */}
-      <section className="relative h-[300px] md:h-[350px] bg-black overflow-hidden group">
-        <Image
-          src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1920&h=800&fit=crop"
-          alt="Inline Skate Frames"
-          fill
-          className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4">
-            <div className="max-w-md">
-              <Badge className="bg-[#bd9131]/20 text-[#bd9131] border-[#bd9131]/30 mb-3 text-xs px-2 py-0.5">
-                Advanced Engineering
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                Performance <span className="text-[#bd9131]">Frames</span>
-              </h2>
-              <p className="text-sm text-white/80 mb-4">
-                Built for speed and stability
-              </p>
-              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
-                <Link href="/products">
-                  Explore Collection
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Link href="/products?category=frames" className="block">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/frame%20banner.png-dwscOhFyi1f9pphfTCB16a2KAlPmz9.jpeg"
+            alt="Auriga Racing Inline Skate Frames - Ultra-Precision AL-7075-T6"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </section>
+      </Link>
 
       {/* Frames Products Section */}
       {framesProducts && framesProducts.length > 0 && (
@@ -778,36 +714,16 @@ export default async function HomePage() {
       </section>
 
       {/* Wheels Full Width Banner */}
-      <section className="relative h-[300px] md:h-[350px] bg-black overflow-hidden group">
-        <Image
-          src="https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?w=1920&h=800&fit=crop"
-          alt="Inline Skate Wheels"
-          fill
-          className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-l from-black via-black/70 to-transparent" />
-        <div className="absolute inset-0 flex items-center justify-end">
-          <div className="container mx-auto px-4">
-            <div className="max-w-md ml-auto text-right">
-              <Badge className="bg-[#bd9131]/20 text-[#bd9131] border-[#bd9131]/30 mb-3 text-xs px-2 py-0.5">
-                Performance Wheels
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                High-Speed <span className="text-[#bd9131]">Wheels</span>
-              </h2>
-              <p className="text-sm text-white/80 mb-4">
-                Engineered for champions
-              </p>
-              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
-                <Link href="/products">
-                  Explore Collection
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Link href="/products?category=wheels" className="block">
+        <section className="relative w-full aspect-[1400/350] bg-black overflow-hidden group cursor-pointer">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wheel%20banner.png-Gap8XKX502nDWQSK9n4InPIMvlNCgM.jpeg"
+            alt="Auriga Racing Wheels - Speed Performance Control"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </section>
+      </Link>
 
       {/* Wheels Products Section */}
       {wheelsProducts && wheelsProducts.length > 0 && (

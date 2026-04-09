@@ -32,7 +32,7 @@ export function ProductCard({ product }: { product: Product }) {
         <Link href={`/products/${product.slug}`}>
           <CardTitle className="text-lg line-clamp-2 hover:text-primary transition-colors">{product.name}</CardTitle>
         </Link>
-        {product.category && <CardDescription className="text-xs">{product.category.name}</CardDescription>}
+        {product.category && product.category.name && <CardDescription className="text-xs">{product.category.name}</CardDescription>}
       </CardHeader>
       <CardContent>
         <div className="flex items-center justify-between">

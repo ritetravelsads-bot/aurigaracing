@@ -54,7 +54,9 @@ export function RecentlyViewedProducts() {
         .limit(6)
 
       if (!error && data) {
-        const productsList = data.map((item: any) => item.products).filter((p: any) => p !== null)
+        const productsList = data
+          .map((item: any) => item.products)
+          .filter((p: any) => p !== null && p !== undefined && p.id)
         setProducts(productsList)
       }
 
@@ -85,7 +87,7 @@ export function RecentlyViewedProducts() {
     <div className="space-y-4">
       <h3 className="text-xl font-semibold">Recently Viewed</h3>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        {products.map((product) => (
+        {products.filter(p => p && p.id).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

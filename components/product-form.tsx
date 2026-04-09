@@ -42,8 +42,14 @@ export function ProductForm({ product, categories }: ProductFormProps) {
   const [brand, setBrand] = useState(product?.brand || "")
   const [videoUrl, setVideoUrl] = useState(product?.video_url || "")
   const [status, setStatus] = useState(product?.status || "draft")
+  const [visibility, setVisibility] = useState(product?.visibility || "visible")
   const [stockQuantity, setStockQuantity] = useState(product?.stock_quantity?.toString() || "0")
   const [isActive, setIsActive] = useState(product?.is_active ?? true)
+  const [allowReviews, setAllowReviews] = useState(product?.allow_reviews ?? true)
+  const [backordersAllowed, setBackordersAllowed] = useState(product?.backorders_allowed ?? false)
+  const [soldIndividually, setSoldIndividually] = useState(product?.sold_individually ?? false)
+  const [gtin, setGtin] = useState(product?.gtin || "")
+  const [purchaseNote, setPurchaseNote] = useState(product?.purchase_note || "")
   const [productType, setProductType] = useState(product?.product_type || "")
   const [productTypeDetails, setProductTypeDetails] = useState<any>(product?.product_type_details || {})
   const [specifications, setSpecifications] = useState<Array<{ key: string; value: string }>>(
@@ -168,9 +174,15 @@ export function ProductForm({ product, categories }: ProductFormProps) {
         image_url: imageUrl,
         brand: brand.trim() || null,
         video_url: videoUrl.trim() || null,
+        gtin: gtin.trim() || null,
+        purchase_note: purchaseNote.trim() || null,
         status: status,
+        visibility: visibility,
         stock_quantity: stock,
         is_active: isActive,
+        allow_reviews: allowReviews,
+        backorders_allowed: backordersAllowed,
+        sold_individually: soldIndividually,
         product_type: productType || null,
         product_type_details: productTypeDetails,
         specifications: specifications.reduce((acc, spec) => {
@@ -184,54 +196,80 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 
       console.log("[v0] Product data prepared:", productData)
 
-      const { data: savedProduct, error: productError } = product
-        ? await supabase.from("products").update(productData).eq("id", product.id).select().single()
-        : await supabase.from("products").insert(productData).select().single()
+      let productId: string
 
-      if (productError) {
-        console.error("[v0] Update error:", productError)
-        throw new Error(productError.message || "Failed to update product")
+      if (product) {
+        // Update existing product
+        const { error: updateError } = await supabase
+          .from("products")
+          .update(productData)
+          .eq("id", product.id)
+
+        if (updateError) {
+          console.error("[v0] Update error:", updateError)
+          throw new Error(updateError.message || "Failed to update product")
+        }
+        productId = product.id
+        console.log("[v0] Product updated with ID:", productId)
+      } else {
+        // Insert new product
+        const { data: insertedProduct, error: insertError } = await supabase
+          .from("products")
+          .insert(productData)
+          .select("id")
+          .single()
+
+        if (insertError) {
+          console.error("[v0] Insert error:", insertError)
+          throw new Error(insertError.message || "Failed to create product")
+        }
+
+        if (!insertedProduct || !insertedProduct.id) {
+          throw new Error("Product was created but no ID was returned. Please try again.")
+        }
+
+        productId = insertedProduct.id
+        console.log("[v0] Product created with ID:", productId)
       }
 
-      await supabase
-        .from("product_categories")
-        .delete()
-        .eq("product_id", product ? product.id : savedProduct.id)
+      // Delete and re-insert product categories
+      await supabase.from("product_categories").delete().eq("product_id", productId)
 
       if (categoryIds.length > 0) {
         const categoryData = categoryIds.map((catId) => ({
-          product_id: product ? product.id : savedProduct.id,
+          product_id: productId,
           category_id: catId,
         }))
-        await supabase.from("product_categories").insert(categoryData)
+        const { error: catError } = await supabase.from("product_categories").insert(categoryData)
+        if (catError) {
+          console.error("[v0] Category insert error:", catError)
+        }
       }
 
-      await supabase
-        .from("product_gallery")
-        .delete()
-        .eq("product_id", product ? product.id : savedProduct.id)
+      // Delete and re-insert gallery images
+      await supabase.from("product_gallery").delete().eq("product_id", productId)
 
       if (gallery.length > 0) {
         const galleryData = gallery.map((url, index) => ({
-          product_id: product ? product.id : savedProduct.id,
+          product_id: productId,
           image_url: url,
           display_order: index,
           is_primary: index === 0,
         }))
-        await supabase.from("product_gallery").insert(galleryData)
+        const { error: galleryError } = await supabase.from("product_gallery").insert(galleryData)
+        if (galleryError) {
+          console.error("[v0] Gallery insert error:", galleryError)
+        }
       }
 
+      // Delete and re-insert specifications
       console.log("[v0] Saving specifications...")
-      // Delete existing specifications
-      if (product) {
-        await supabase.from("product_specifications").delete().eq("product_id", product.id)
-      }
+      await supabase.from("product_specifications").delete().eq("product_id", productId)
 
-      // Insert new specifications
       const specificationsToInsert = specifications
-        .filter((spec) => spec.key && spec.value) // Only save if both key and value exist
+        .filter((spec) => spec.key && spec.value)
         .map((spec, index) => ({
-          product_id: product ? product.id : savedProduct.id,
+          product_id: productId,
           spec_key: spec.key,
           spec_value: spec.value,
           display_order: index,
@@ -239,10 +277,22 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 
       if (specificationsToInsert.length > 0) {
         const { error: specsError } = await supabase.from("product_specifications").insert(specificationsToInsert)
-
         if (specsError) {
           console.error("[v0] Specifications save error:", specsError)
-          throw specsError
+        }
+      }
+
+      // Delete and re-insert tags
+      await supabase.from("product_tags").delete().eq("product_id", productId)
+
+      if (tags.length > 0) {
+        const tagsData = tags.map((tag) => ({
+          product_id: productId,
+          tag: tag,
+        }))
+        const { error: tagsError } = await supabase.from("product_tags").insert(tagsData)
+        if (tagsError) {
+          console.error("[v0] Tags insert error:", tagsError)
         }
       }
 
@@ -865,42 +915,116 @@ export function ProductForm({ product, categories }: ProductFormProps) {
               <CardDescription>Manage inventory and product visibility</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="stock">Stock Quantity *</Label>
-                <Input
-                  id="stock"
-                  type="number"
-                  min="0"
-                  value={stockQuantity}
-                  onChange={(e) => setStockQuantity(e.target.value)}
-                  required
-                />
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="stock">Stock Quantity *</Label>
+                  <Input
+                    id="stock"
+                    type="number"
+                    min="0"
+                    value={stockQuantity}
+                    onChange={(e) => setStockQuantity(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="gtin">GTIN / UPC / EAN / ISBN</Label>
+                  <Input
+                    id="gtin"
+                    value={gtin}
+                    onChange={(e) => setGtin(e.target.value)}
+                    placeholder="e.g., 012345678901"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="status">Product Status</Label>
-                <select
-                  id="status"
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                >
-                  <option value="draft">Draft</option>
-                  <option value="published">Published</option>
-                  <option value="archived">Archived</option>
-                </select>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="status">Product Status</Label>
+                  <select
+                    id="status"
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  >
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="archived">Archived</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="visibility">Catalog Visibility</Label>
+                  <select
+                    id="visibility"
+                    value={visibility}
+                    onChange={(e) => setVisibility(e.target.value)}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  >
+                    <option value="visible">Shop and Search</option>
+                    <option value="catalog">Shop Only</option>
+                    <option value="search">Search Only</option>
+                    <option value="hidden">Hidden</option>
+                  </select>
+                </div>
               </div>
 
               <Separator />
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <Label htmlFor="active">Active Status</Label>
-                  <p className="text-sm text-muted-foreground">
-                    {isActive ? "Product is visible" : "Product is hidden"}
-                  </p>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="active">Active Status</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {isActive ? "Product is visible" : "Product is hidden"}
+                    </p>
+                  </div>
+                  <Switch id="active" checked={isActive} onCheckedChange={setIsActive} />
                 </div>
-                <Switch id="active" checked={isActive} onCheckedChange={setIsActive} />
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="allow_reviews">Allow Reviews</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {allowReviews ? "Customers can leave reviews" : "Reviews disabled"}
+                    </p>
+                  </div>
+                  <Switch id="allow_reviews" checked={allowReviews} onCheckedChange={setAllowReviews} />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="backorders">Allow Backorders</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {backordersAllowed ? "Allow orders when out of stock" : "No backorders"}
+                    </p>
+                  </div>
+                  <Switch id="backorders" checked={backordersAllowed} onCheckedChange={setBackordersAllowed} />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <Label htmlFor="sold_individually">Sold Individually</Label>
+                    <p className="text-sm text-muted-foreground">
+                      {soldIndividually ? "Limit to 1 per order" : "No quantity limit"}
+                    </p>
+                  </div>
+                  <Switch id="sold_individually" checked={soldIndividually} onCheckedChange={setSoldIndividually} />
+                </div>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2">
+                <Label htmlFor="purchase_note">Purchase Note</Label>
+                <Textarea
+                  id="purchase_note"
+                  value={purchaseNote}
+                  onChange={(e) => setPurchaseNote(e.target.value)}
+                  placeholder="Note to display after purchase (e.g., sizing info, care instructions)"
+                  rows={3}
+                />
               </div>
             </CardContent>
           </Card>
