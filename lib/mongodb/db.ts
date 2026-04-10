@@ -1,6 +1,21 @@
 import { getDb, ObjectId } from "./client"
 import type { Collection, Filter, Sort, Document, WithId } from "mongodb"
 
+// Helper to safely convert ID to ObjectId or keep as string
+function toSafeObjectId(value: unknown): ObjectId | string {
+  try {
+    const str = String(value)
+    // Check if it's a valid 24-character hex string (ObjectId format)
+    if (/^[0-9a-fA-F]{24}$/.test(str)) {
+      return new ObjectId(str)
+    }
+    // Otherwise keep as string for UUID or other ID formats
+    return str
+  } catch {
+    return String(value)
+  }
+}
+
 // Helper to normalize MongoDB documents (convert _id to id)
 function normalizeDoc<T extends Document>(doc: WithId<T> | null): (T & { id: string }) | null {
   if (!doc) return null
@@ -44,7 +59,7 @@ class QueryBuilder<T extends Document> {
 
   eq(field: string, value: unknown) {
     if (field === "id") {
-      this.filters._id = new ObjectId(value as string) as unknown as Filter<T>[keyof Filter<T>]
+      this.filters._id = toSafeObjectId(value) as unknown as Filter<T>[keyof Filter<T>]
     } else {
       (this.filters as Record<string, unknown>)[field] = value
     }
@@ -91,10 +106,11 @@ class QueryBuilder<T extends Document> {
     (this.filters as Record<string, unknown>)[field] = value
     return this
   }
-
+  
   in(field: string, values: unknown[]) {
     if (field === "id") {
-      this.filters._id = { $in: values.map((v) => new ObjectId(v as string)) } as unknown as Filter<T>[keyof Filter<T>]
+      const objectIds = values.map((v) => toSafeObjectId(v))
+      this.filters._id = { $in: objectIds } as unknown as Filter<T>[keyof Filter<T>]
     } else {
       (this.filters as Record<string, unknown>)[field] = { $in: values }
     }
@@ -286,16 +302,17 @@ class UpdateBuilder<T extends Document> {
 
   eq(field: string, value: unknown) {
     if (field === "id") {
-      this.filters._id = new ObjectId(value as string) as unknown as Filter<T>[keyof Filter<T>]
+      this.filters._id = toSafeObjectId(value) as unknown as Filter<T>[keyof Filter<T>]
     } else {
       (this.filters as Record<string, unknown>)[field] = value
     }
     return this
   }
-
+  
   in(field: string, values: unknown[]) {
     if (field === "id") {
-      this.filters._id = { $in: values.map((v) => new ObjectId(v as string)) } as unknown as Filter<T>[keyof Filter<T>]
+      const objectIds = values.map((v) => toSafeObjectId(v))
+      this.filters._id = { $in: objectIds } as unknown as Filter<T>[keyof Filter<T>]
     } else {
       (this.filters as Record<string, unknown>)[field] = { $in: values }
     }
@@ -354,16 +371,17 @@ class DeleteBuilder<T extends Document> {
 
   eq(field: string, value: unknown) {
     if (field === "id") {
-      this.filters._id = new ObjectId(value as string) as unknown as Filter<T>[keyof Filter<T>]
+      this.filters._id = toSafeObjectId(value) as unknown as Filter<T>[keyof Filter<T>]
     } else {
       (this.filters as Record<string, unknown>)[field] = value
     }
     return this
   }
-
+  
   in(field: string, values: unknown[]) {
     if (field === "id") {
-      this.filters._id = { $in: values.map((v) => new ObjectId(v as string)) } as unknown as Filter<T>[keyof Filter<T>]
+      const objectIds = values.map((v) => toSafeObjectId(v))
+      this.filters._id = { $in: objectIds } as unknown as Filter<T>[keyof Filter<T>]
     } else {
       (this.filters as Record<string, unknown>)[field] = { $in: values }
     }

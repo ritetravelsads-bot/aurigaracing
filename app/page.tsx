@@ -227,7 +227,7 @@ export default async function HomePage() {
       )}
 
       {/* Hoodie Banner */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-[#1e3a8a] via-[#2563eb] to-[#3b82f6] relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#4a4a4a] via-[#5a5a5a] to-[#3a3a3a] relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1 text-white">
@@ -248,9 +248,9 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[250px] md:h-[350px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racing-hoodies.png-cBibuVEmZLBKUYaXFLgSKnOoZELXpB.jpeg"
                 alt="Auriga Racing Hoodie"
                 fill
                 className="object-contain"
@@ -303,7 +303,7 @@ export default async function HomePage() {
       )}
 
       {/* Ankle Booties Banner */}
-      <section className="py-12 md:py-16 bg-black text-white relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0a0a0a] text-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8">
             <div className="flex-1">
@@ -323,10 +323,10 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[250px] md:h-[350px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=600&fit=crop"
-                alt="Ankle Booties"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racing-ankle-booties.png-1DkzgTQWmDJ8KjkQn0lsO54uRBbb64.jpeg"
+                alt="Auriga Racing Ankle Booties"
                 fill
                 className="object-contain"
               />
@@ -370,30 +370,30 @@ export default async function HomePage() {
       )}
 
       {/* Pro Boots Banner */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-[#bd9131] via-[#d4a84b] to-[#a17d27] text-black relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#f5f5f5] via-[#e8e8e8] to-[#d0d0d0] text-black relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
-              <Badge className="bg-black/20 text-black border-black/30 mb-4 text-xs px-2 py-0.5">
+              <Badge className="bg-[#bd9131]/20 text-[#bd9131] border-[#bd9131]/30 mb-4 text-xs px-2 py-0.5">
                 Handcrafted Excellence
               </Badge>
               <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                Pro Inline Skate Boots
+                Pro Inline <span className="text-[#bd9131]">Skate Boots</span>
               </h2>
-              <p className="text-sm md:text-base mb-5 text-black/80 leading-relaxed max-w-md">
+              <p className="text-sm md:text-base mb-5 text-black/70 leading-relaxed max-w-md">
                 Designed in India using the finest Japanese Carbon Fiber and microfiber leather, purely handmade.
               </p>
-              <Button asChild size="sm" className="bg-black hover:bg-neutral-900 text-white font-semibold px-6">
+              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
                 <Link href="/products">
                   Shop Now
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[250px] md:h-[350px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop"
-                alt="Pro Inline Skate Boots"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/japanese-carbon-fiber-pro-inline-skate-boots.png-DtEEhJ8C5mbrsAyADpqy940ihQG2LD.jpeg"
+                alt="Japanese Carbon Fiber Pro Inline Skate Boots"
                 fill
                 className="object-contain"
               />
@@ -415,30 +415,30 @@ export default async function HomePage() {
       </Link>
 
       {/* Aero Helmets Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-neutral-300 via-neutral-400 to-neutral-500 text-black relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] text-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8">
             <div className="flex-1">
-              <Badge className="bg-black/10 text-black border-black/20 mb-4 text-xs px-2 py-0.5">
+              <Badge className="bg-[#6366f1]/20 text-[#a5b4fc] border-[#6366f1]/30 mb-4 text-xs px-2 py-0.5">
                 Wind Tunnel Tested
               </Badge>
               <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                Auriga Racing <span className="text-white drop-shadow-md">Aero Helmets</span>
+                Auriga Racing <span className="text-[#a5b4fc]">Aero Helmets</span>
               </h2>
-              <p className="text-sm md:text-base mb-5 text-black/70 leading-relaxed max-w-md">
+              <p className="text-sm md:text-base mb-5 text-white/70 leading-relaxed max-w-md">
                 Delivering not just aerodynamics but pure speed and unmatched performance.
               </p>
-              <Button asChild size="sm" className="bg-white hover:bg-neutral-100 text-black font-semibold px-6 shadow">
+              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
                 <Link href="/products">
                   Shop Now
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[250px] md:h-[400px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1557803175-2f8c4482f92c?w=600&h=600&fit=crop"
-                alt="Aero Helmets"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racinga-aero-helmets.png-z68SeF9TcQZYpxkZaO7m5ui7tQQcLM.jpeg"
+                alt="Auriga Racing Aero Helmets"
                 fill
                 className="object-contain"
               />
@@ -523,25 +523,25 @@ export default async function HomePage() {
       )}
 
       {/* Cadet Skates Banner */}
-      <section className="py-12 md:py-16 bg-white text-black relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#5a7a8a] via-[#4a6a7a] to-[#3a5a6a] text-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[280px] md:h-[400px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop"
-                alt="Cadet Inline Skates"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cadet-inline-skates.png-41DDjpspnVjwnWKlM2840gvbP11RrI.jpeg"
+                alt="Auriga Racing Cadet Inline Skates"
                 fill
                 className="object-contain"
               />
             </div>
             <div className="flex-1">
-              <Badge className="bg-[#bd9131]/10 text-[#bd9131] border-[#bd9131]/30 mb-4 text-xs px-2 py-0.5">
+              <Badge className="bg-white/20 text-white border-white/30 mb-4 text-xs px-2 py-0.5">
                 Versatile Design
               </Badge>
               <h2 className="text-2xl md:text-3xl font-bold mb-3">
                 Cadet Inline Skates <span className="text-[#bd9131]">4x90 / 3x110</span>
               </h2>
-              <p className="text-sm md:text-base mb-5 text-neutral-600 leading-relaxed max-w-md">
+              <p className="text-sm md:text-base mb-5 text-white/80 leading-relaxed max-w-md">
                 Versatility meets performance. Transform from three wheels to four wheels in the same package.
               </p>
               <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
@@ -602,30 +602,30 @@ export default async function HomePage() {
       )}
 
       {/* Boot Grey Section */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-neutral-500 via-neutral-600 to-neutral-700 text-white relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#2a2a2a] via-[#1f1f1f] to-[#151515] text-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8">
             <div className="flex-1">
-              <Badge className="bg-white/20 text-white border-white/30 mb-4 text-xs px-2 py-0.5">
-                Japanese Carbon Fiber
+              <Badge className="bg-[#ec4899]/20 text-[#f472b6] border-[#ec4899]/30 mb-4 text-xs px-2 py-0.5">
+                Holographic Design
               </Badge>
               <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                Pro Inline <span className="text-[#bd9131]">Skate Boots</span>
+                Pro Inline <span className="text-[#ec4899]">Skate Boots</span>
               </h2>
               <p className="text-sm md:text-base mb-5 text-white/80 leading-relaxed max-w-md">
                 Designed in India and produced by master leather craftsmen. Purely handmade with the finest materials.
               </p>
-              <Button asChild size="sm" className="bg-white hover:bg-neutral-100 text-black font-semibold px-6">
+              <Button asChild size="sm" className="bg-[#bd9131] hover:bg-[#a17d27] text-black font-semibold px-6">
                 <Link href="/products">
                   Shop Now
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[280px] md:h-[380px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=600&fit=crop"
-                alt="Pro Inline Skate Boots"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pro-inline-skate-boots.png-qUtxaSMbSu6KIKh7WRzSxl5Xm6dHHf.jpeg"
+                alt="Pro Inline Skate Boots with Holographic Design"
                 fill
                 className="object-contain"
               />
@@ -681,9 +681,9 @@ export default async function HomePage() {
       )}
 
       {/* OCCULT Frames Banner */}
-      <section className="py-12 md:py-16 bg-black text-white relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#1a2a3a] via-[#0f1f2f] to-[#0a1520] text-white relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
               <Badge className="bg-[#bd9131]/20 text-[#bd9131] border-[#bd9131]/30 mb-4 text-xs px-2 py-0.5">
                 High-Speed Racing
@@ -701,10 +701,10 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[200px] md:h-[280px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop"
-                alt="OCCULT Inline Frames"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/occult-inline-frames.png-JiuNt2UCgdbtoOybzlKFzENFqPfShE.jpeg"
+                alt="OCCULT Inline Frames with Pink Wheels"
                 fill
                 className="object-contain"
               />
@@ -760,15 +760,15 @@ export default async function HomePage() {
       )}
 
       {/* MPC Storm Surge Banner */}
-      <section className="py-12 md:py-16 bg-white relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-br from-[#e8e8e8] via-[#f0f0f0] to-[#e0e0e0] relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8">
             <div className="flex-1">
-              <Badge className="bg-blue-500/10 text-blue-600 border-blue-500/30 mb-4 text-xs px-2 py-0.5">
+              <Badge className="bg-[#3b82f6]/10 text-[#3b82f6] border-[#3b82f6]/30 mb-4 text-xs px-2 py-0.5">
                 All Weather Performance
               </Badge>
               <h2 className="text-2xl md:text-3xl font-bold mb-3 text-black">
-                MPC Storm Surge <span className="text-[#bd9131]">100mm XFirm</span>
+                MPC Storm Surge <span className="text-[#f97316]">125mm XGrip</span>
               </h2>
               <p className="text-sm md:text-base mb-5 text-neutral-600 leading-relaxed max-w-md">
                 Own the road in the rain. The best wheels ever produced for rain conditions.
@@ -780,10 +780,10 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[300px] w-full">
+            <div className="flex-1 relative h-[280px] md:h-[380px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?w=600&h=600&fit=crop"
-                alt="MPC Storm Surge Wheels"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mpc-storm-surge-wheel.png-LpwozFhcl9PQW7LbUmq4hBxMs26Ny1.jpeg"
+                alt="MPC Storm Surge 125mm XGrip Wheel"
                 fill
                 className="object-contain"
               />

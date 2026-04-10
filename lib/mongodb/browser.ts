@@ -156,6 +156,18 @@ function createClientQueryBuilder(
       filters[field] = { $is: value }
       return builder
     },
+    like: (field: string, pattern: string) => {
+      filters[field] = { $like: pattern }
+      return builder
+    },
+    ilike: (field: string, pattern: string) => {
+      filters[field] = { $ilike: pattern }
+      return builder
+    },
+    not: (field: string, op: string, value: unknown) => {
+      filters[field] = { $not: { op, value } }
+      return builder
+    },
     or: (orFilter: string) => {
       filters._or = orFilter
       return builder
