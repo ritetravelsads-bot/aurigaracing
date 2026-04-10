@@ -248,13 +248,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[350px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racing-hoodies.png-cBibuVEmZLBKUYaXFLgSKnOoZELXpB.jpeg"
-                alt="Auriga Racing Hoodie"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[280px] md:h-[400px] w-full group/img">
+              <div className="absolute inset-4 bg-white/10 rounded-[2rem] blur-2xl opacity-60 group-hover/img:opacity-80 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-black/30">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racing-hoodies.png-cBibuVEmZLBKUYaXFLgSKnOoZELXpB.jpeg"
+                  alt="Auriga Racing Hoodie"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -323,13 +326,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[350px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racing-ankle-booties.png-1DkzgTQWmDJ8KjkQn0lsO54uRBbb64.jpeg"
-                alt="Auriga Racing Ankle Booties"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[280px] md:h-[400px] w-full group/img">
+              <div className="absolute inset-4 bg-[#bd9131]/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/40">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racing-ankle-booties.png-1DkzgTQWmDJ8KjkQn0lsO54uRBbb64.jpeg"
+                  alt="Auriga Racing Ankle Booties"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -390,13 +396,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[350px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/japanese-carbon-fiber-pro-inline-skate-boots.png-DtEEhJ8C5mbrsAyADpqy940ihQG2LD.jpeg"
-                alt="Japanese Carbon Fiber Pro Inline Skate Boots"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[280px] md:h-[400px] w-full group/img">
+              <div className="absolute inset-4 bg-[#bd9131]/30 rounded-[3rem] blur-2xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[3rem] overflow-hidden shadow-2xl shadow-black/20">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/japanese-carbon-fiber-pro-inline-skate-boots.png-DtEEhJ8C5mbrsAyADpqy940ihQG2LD.jpeg"
+                  alt="Japanese Carbon Fiber Pro Inline Skate Boots"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -435,13 +444,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[250px] md:h-[400px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racinga-aero-helmets.png-z68SeF9TcQZYpxkZaO7m5ui7tQQcLM.jpeg"
-                alt="Auriga Racing Aero Helmets"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[300px] md:h-[420px] w-full group/img">
+              <div className="absolute inset-4 bg-[#6366f1]/30 rounded-[2rem] blur-3xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-purple-500/30">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auriga-racinga-aero-helmets.png-z68SeF9TcQZYpxkZaO7m5ui7tQQcLM.jpeg"
+                  alt="Auriga Racing Aero Helmets"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -526,13 +538,16 @@ export default async function HomePage() {
       <section className="py-12 md:py-16 bg-gradient-to-br from-[#5a7a8a] via-[#4a6a7a] to-[#3a5a6a] text-white relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 relative h-[280px] md:h-[400px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cadet-inline-skates.png-41DDjpspnVjwnWKlM2840gvbP11RrI.jpeg"
-                alt="Auriga Racing Cadet Inline Skates"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[300px] md:h-[420px] w-full group/img">
+              <div className="absolute inset-4 bg-white/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/30">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cadet-inline-skates.png-41DDjpspnVjwnWKlM2840gvbP11RrI.jpeg"
+                  alt="Auriga Racing Cadet Inline Skates"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
             <div className="flex-1">
               <Badge className="bg-white/20 text-white border-white/30 mb-4 text-xs px-2 py-0.5">
@@ -622,13 +637,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[280px] md:h-[380px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pro-inline-skate-boots.png-qUtxaSMbSu6KIKh7WRzSxl5Xm6dHHf.jpeg"
-                alt="Pro Inline Skate Boots with Holographic Design"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[300px] md:h-[420px] w-full group/img">
+              <div className="absolute inset-4 bg-[#ec4899]/30 rounded-[2rem] blur-2xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl shadow-pink-500/30">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pro-inline-skate-boots.png-qUtxaSMbSu6KIKh7WRzSxl5Xm6dHHf.jpeg"
+                  alt="Pro Inline Skate Boots with Holographic Design"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -701,13 +719,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[200px] md:h-[280px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/occult-inline-frames.png-JiuNt2UCgdbtoOybzlKFzENFqPfShE.jpeg"
-                alt="OCCULT Inline Frames with Pink Wheels"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[220px] md:h-[320px] w-full group/img">
+              <div className="absolute inset-4 bg-[#bd9131]/20 rounded-[1.5rem] blur-2xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[1.5rem] overflow-hidden shadow-2xl shadow-black/40">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/occult-inline-frames.png-JiuNt2UCgdbtoOybzlKFzENFqPfShE.jpeg"
+                  alt="OCCULT Inline Frames with Pink Wheels"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -780,13 +801,16 @@ export default async function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 relative h-[280px] md:h-[380px] w-full">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mpc-storm-surge-wheel.png-LpwozFhcl9PQW7LbUmq4hBxMs26Ny1.jpeg"
-                alt="MPC Storm Surge 125mm XGrip Wheel"
-                fill
-                className="object-contain"
-              />
+            <div className="flex-1 relative h-[300px] md:h-[420px] w-full group/img">
+              <div className="absolute inset-4 bg-[#3b82f6]/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover/img:opacity-70 transition-opacity duration-500" />
+              <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/20">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mpc-storm-surge-wheel.png-LpwozFhcl9PQW7LbUmq4hBxMs26Ny1.jpeg"
+                  alt="MPC Storm Surge 125mm XGrip Wheel"
+                  fill
+                  className="object-contain scale-95 drop-shadow-2xl transition-transform duration-500 group-hover/img:scale-100"
+                />
+              </div>
             </div>
           </div>
         </div>
