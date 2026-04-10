@@ -279,7 +279,7 @@ export default async function HomePage() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
               {categories.map((category) => (
                 <Link key={category.id} href={`/products/category/${category.slug}`} className="group">
-                  <Card className="overflow-hidden border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 h-full">
+                  <Card className="overflow-hidden border-0 bg-card shadow-sm hover:shadow-lg transition-all duration-300 h-full py-0">
                     <div className="aspect-square bg-muted overflow-hidden relative">
                       <Image
                         src={getImageKitUrl(category.image_url, { height: 300, width: 300 }) || "/placeholder.svg"}
